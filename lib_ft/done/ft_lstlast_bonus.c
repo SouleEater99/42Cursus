@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:35:21 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 15:35:23 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:39:41 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst)
-		lst = lst->next;
+	if (lst)
+		while (lst->next)
+			lst = lst->next;
 	return (lst);
 }
