@@ -6,13 +6,13 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:08:45 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 12:09:21 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:08:14 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int argument)
+int	ft_isdigit(int argument)
 {
 	if (argument >= '0' && argument <= '9')
 		return (1);

@@ -26,9 +26,9 @@ int	main()
 {
 	unsigned char src[] = "hello world";
 	unsigned char src2[] = "hello world";
-	unsigned char *dest = (unsigned char *)memmove(src + 6, src, 5);
+	unsigned char *dest = (unsigned char *)memmove(src + 6, src, 0);
 	
 	printf("memmove from standard lib: src[ %s ] | dest [ %s ] \n", src, dest);
-	dest = (unsigned char *)ft_memmove(src2 + 6, src2, 5);
-	printf("my ft_memmove(): src[ %s ] | dest [ %s ] \n", src2,dest);
+	unsigned char *dest2 = (unsigned char *)ft_memmove(src2 + 6, src2, 0);
+	printf("my ft_memmove(): src[ %s ] | dest [ %s ] \n", src2,dest2);
 }

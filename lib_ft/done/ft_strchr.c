@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:38:25 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 16:39:38 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:24:36 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *str, int c)
 			return ((char *)str);
 		str++;
 	}
+	if (*str == uc)
+		return ((char *)str);
 	return (NULL);
 }

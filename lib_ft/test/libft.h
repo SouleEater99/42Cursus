@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:02:47 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/12 14:10:04 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/12 07:24:06 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_atoi(const char *str);
 int					ft_isalpha(int argument);
-int					ft_isdigit(int argument);
-int					ft_isalnum(int arg);
+int					ft_isalpha(int argument);
+int					ft_isalnum(int argument);
 int					ft_isascii(int c);
 int					ft_isprint(int arg);
-int					ft_toupper(int argument);
+int					ft_toupper(int ch);
 int					ft_tolower(int argument);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
 int					ft_lstsize(t_list *lst);
@@ -51,7 +50,6 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(int n);
-char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				*ft_memset(void *str, int c, size_t n);
 void				ft_bzero(void *s, size_t n);

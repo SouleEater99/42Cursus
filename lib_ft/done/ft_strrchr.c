@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:13:37 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 17:18:01 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:06:17 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,17 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int				pos;
 	int				i;
 	unsigned char	uc;
 
 	if (!str)
 		return (NULL);
 	uc = c;
-	i = 0;
-	pos = -1;
-	while (str[i])
-	{
+	i = ft_strlen(str);
+	if (uc == str[i])
+		return ((char *)&str[i]);
+	while (--i >= 0)
 		if (str[i] == uc)
-			pos = i;
-		i++;
-	}
-	if (pos >= 0)
-		return ((char *)(str + pos));
+			return ((char *)&str[i]);
 	return (NULL);
 }

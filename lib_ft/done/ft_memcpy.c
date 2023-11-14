@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 14:27:32 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 15:51:47 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/12 08:27:16 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*d;
 	unsigned char	*s;
 
-	if (!dest || !src || n == 0)
+	if (!dest || !src)
 		return (NULL);
 	i = 0;
 	d = (unsigned char *)dest;
@@ -28,6 +28,5 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		d[i] = s[i];
 		i++;
 	}
-	d[i] = '\0';
 	return (dest);
 }

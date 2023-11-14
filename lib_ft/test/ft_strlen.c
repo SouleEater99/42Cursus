@@ -1,5 +1,4 @@
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -9,10 +8,4 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-int	main()
-{
-	printf("%ld", ft_strlen("hello"));
-
 }

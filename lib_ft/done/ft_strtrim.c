@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:27:05 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 17:27:47 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/14 08:31:13 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (len > i && !ft_check_set(s1[len - 1], set))
 		len--;
 	str = malloc(len - i + 1);
+	if (!str)
+		return (NULL);
 	while (i < len)
 		str[end++] = s1[i++];
 	str[end] = '\0';

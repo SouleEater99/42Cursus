@@ -28,7 +28,7 @@ int	main()
 {
 
 const char *input = "Data";
-char *substring = ft_substr(input, 0, 4);
+char *substring = ft_substr(input, 0, 0);
 if (substring) {
     printf("Substring: %s\n", substring);  // Output: "" (empty string)
     free(substring);  // Don't forget to free the allocated memory

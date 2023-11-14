@@ -95,7 +95,7 @@ char **ft_split(char const *s, char c)
 }
 
 int main() {
-    const char *str = "this is a test string";
+    const char *str = " lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ";
     char **result = ft_split(str, ' ');
 
     if (result == NULL) {

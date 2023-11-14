@@ -7,6 +7,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
+	if (!haystack || !needle || !haystack[0])
+		return ((char *)haystack);
 	while (haystack[i] && i < len)
 	{
 		j = 0;
@@ -20,7 +22,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 int	main()
 {
-	const char	*str = "hello to world abdelali";
+	const char	*str = "";
 	const char	*needle = "world";
 	size_t		n = 14;
 
