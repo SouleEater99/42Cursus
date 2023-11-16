@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:48 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/14 15:16:07 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:04:55 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 		str2++;
 	}
 	if (n == 0)
-		return ((unsigned char)*(str1 - 1) - (unsigned char)*(str2 - 1));
-	return ((unsigned char)*(str1) - (unsigned char)*(str2));
+		return ((unsigned char)(str1 - 1) - (unsigned char)(str2 - 1));
+	return ((unsigned char)(str1) - (unsigned char)(str2));
 }

@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:02:47 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/12 14:10:04 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:01:43 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <ctype.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
