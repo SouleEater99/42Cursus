@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:02:47 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/16 15:01:43 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/17 07:14:12 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <ctype.h>
+# include <stdint.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <stddef.h>

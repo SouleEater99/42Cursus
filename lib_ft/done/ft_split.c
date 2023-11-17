@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 08:41:06 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/16 15:05:25 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/17 08:49:37 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static char	**ft_creat_tab(char **tab, const char *str, char c)
 
 	i = 0;
 	count = 0;
-	while (str[i] == c)
-		i++;
 	if (str[i] != '\0')
 		count = 1;
 	while (str[i])
@@ -57,7 +55,7 @@ static char	*ft_strdup_char(char const *str, char c)
 	return (d);
 }
 
-static size_t	ft_free(char **tab, int i)
+static char	**ft_free(char **tab, int i)
 {
 	int	j;
 
@@ -65,7 +63,7 @@ static size_t	ft_free(char **tab, int i)
 	while (j < i)
 		free(tab[j++]);
 	free(tab);
-	return (1);
+	return (NULL);
 }
 
 static const char	*ft_replace_str(const char *s, char c)
@@ -95,8 +93,7 @@ char	**ft_split(char const *s, char c)
 	{
 		tab[i] = ft_strdup_char(s, c);
 		if (!tab[i++])
-			if (ft_free(tab, i) == 1)
-				return (NULL);
+			return (ft_free(tab, i));
 		s = ft_replace_str(s, c);
 	}
 	return (tab);
