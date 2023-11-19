@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:44:23 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 15:47:14 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/19 09:28:33 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	*ft_memchr(const void *ptr, int c, size_t n)
 	unsigned char	ch;
 	size_t			i;
 
-	if (!ptr || n == 0)
-		return (NULL);
 	ch = c;
 	i = 0;
 	uc = (unsigned char *)ptr;

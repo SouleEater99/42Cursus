@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 15:47:39 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 15:50:33 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/19 09:35:52 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	unsigned char	*s1;
 	unsigned char	*s2;
 
-	if (!str1 || !str2 || n == 0)
+	if (n == 0)
 		return (0);
 	i = 0;
 	s1 = (unsigned char *)str1;

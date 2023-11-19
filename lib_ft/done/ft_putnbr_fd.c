@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 16:00:23 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/11 16:00:59 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/19 07:19:39 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	nbr;
+	long long	nbr;
 
 	nbr = n;
-	if (nbr < 0)
+	if (fd >= 0)
 	{
-		ft_putchar_fd('-', fd);
-		nbr = -nbr;
+		if (nbr < 0)
+		{
+			ft_putchar_fd('-', fd);
+			nbr = -nbr;
+		}
+		if (nbr > 9)
+		{
+			ft_putnbr_fd(nbr / 10, fd);
+			ft_putnbr_fd(nbr % 10, fd);
+		}
+		else if (nbr <= 9)
+			ft_putchar_fd(nbr + '0', fd);
 	}
-	if (nbr > 9)
-	{
-		ft_putnbr_fd(nbr / 10, fd);
-		ft_putnbr_fd(nbr % 10, fd);
-	}
-	else if (nbr <= 9)
-		ft_putchar_fd(nbr + '0', fd);
 }

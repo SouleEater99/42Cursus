@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:14:48 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/17 10:39:04 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/19 09:16:17 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	if (!str1 || !str2)
-		return (0);
 	while (n > 0 && *str1 && *str2 && *str1 == *str2)
 	{
 		n--;

@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 NAME = libft.a
@@ -58,13 +58,12 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
-b_obj : $(OBJ_B) 
+$(OBJ_B) : $(SRC_B)
+	$(CC) $(CFLAGS) -c $(SRC_B)
 	$(AR) $(NAME) $(OBJ_B)
 
-bonus: $(b_obj)
+bonus: $(OBJ_B)
 
 clean:
 	$(RM) $(OBJ) $(OBJ_B)
@@ -73,3 +72,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: bonus all clean fclean re
