@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:02:18 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/19 07:22:15 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/24 06:53:27 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t num, size_t size)
 {
 	void	*allocate;
 
-	if (size > SIZE_MAX / num && num != 0)
+	if (num != 0 && size > SIZE_MAX / num)
 		return (NULL);
 	allocate = malloc(num * size);
 	if (allocate == NULL)

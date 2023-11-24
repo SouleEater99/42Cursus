@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 17:05:56 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/11/19 09:05:27 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/24 08:19:02 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 
-	if (!dest || !src)
-		return (0);
 	i = 0;
 	if (size == 0)
 		return (ft_strlen(src));
