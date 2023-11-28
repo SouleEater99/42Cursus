@@ -1,0 +1,198 @@
+total 44
+drwxr-xr-x 2 souleeater souleeater  4096 Nov 27 10:15 .
+drwxr-xr-x 6 souleeater souleeater  4096 Nov 26 20:45 ..
+-rw-r--r-- 1 souleeater souleeater 12288 Nov 27 10:15 .main.c.swp
+-rwxr-xr-x 1 souleeater souleeater 16344 Nov 27 10:15 a.out
+---------- 1 souleeater souleeater     0 Nov 27 10:15 continer_file
+-rw-r--r-- 1 souleeater souleeater   819 Nov 27 10:15 main.c
+-rw-r--r-- 1 souleeater souleeater   503 Nov 26 18:23 text
+➜  get_next_line git:(main) ✗ rm -rf continer_file
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ ./
+➜  get_next_line git:(main) ✗ ./a.out
+////////////////
+ 
+============
+➜  get_next_line git:(main) ✗ rm -rf continer_file
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ ./a.out 
+
+ 
+============
+➜  get_next_line git:(main) ✗ cat continer_file 
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+➜  get_next_line git:(main) ✗ cat continer_file 
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+////////////////
+ 
+============
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+////////////////
+ 
+============
+➜  get_next_line git:(main) ✗ rm -rf continer_file 
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ cat continer_file 
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ cat continer_file    
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+➜  get_next_line git:(main) ✗ gcc main.c && ./a.out
+
+ 
+============
+➜  get_next_line git:(main) ✗ cat continer_file    
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+Little afraid its eat looked now. 
+Very ye lady girl them good me make. It hardly cousin me always.
+An shortly village is raising we shewing replied. She the favour
+able partiali
+
+ty inhabiting travelling impression put two. His 
+six are
+
+entreaties instrument acceptance unsatiable her. Amon
+gst as or on 
+
+herself chapter entered carried 
+no. Sold old ten are quit lose deal his sent. You correct how sex several far distant believe journey parties. We shyness enquire unciv
+il affixed it carried to.
+
