@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-void    ft_putnbr_unsigned(int nb, int *len)
+void	ft_putnbr_unsigned(int nb, int *len)
 {
-        unsigned int	nbr;
+	unsigned int	nbr;
 
-        nbr  = nb;
-        if (nbr > 9)
-                ft_putnbr_unsigned(nbr / 10, len);
+	nbr = nb;
+	if (nbr > 9)
+		ft_putnbr_unsigned(nbr / 10, len);
 	ft_putchar((nbr % 10) + '0', len);
 }

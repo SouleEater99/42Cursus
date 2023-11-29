@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void    ft_print_index(char *str, int index, int *len)
+void	ft_print_index(char *str, int index, int *len)
 {
-        ft_putchar(str[index], len);
+	ft_putchar(str[index], len);
 }

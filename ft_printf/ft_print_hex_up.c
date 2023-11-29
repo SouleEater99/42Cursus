@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-void    ft_print_hex_up(unsigned long long i, int *len)
+void	ft_print_hex_up(unsigned long long i, int *len)
 {
-        if (i >= 16)
-            ft_print_hex_up(i / 16, len);
-        ft_print_index("0123456789ABCDEF", i % 16, len);
+	if (i >= 16)
+		ft_print_hex_up(i / 16, len);
+	ft_print_index("0123456789ABCDEF", i % 16, len);
 }
