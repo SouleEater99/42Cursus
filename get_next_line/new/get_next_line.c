@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:59:49 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/02 18:13:57 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:06:55 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,67 +16,53 @@
 # define BUFFER_SIZE 42
 #endif
 
-int	ft_check_buckup(char *buffer)
+char	*ft_extract_line(char *buckup)
 {
-	int	i;
+	char	*line;
+	int		i;
 
 	i = 0;
-	while (buffer[i])
-		if (buffer[i++] == '\n')
-			return (1);
-	return (0);
-}
-
-char	*ft_extract_line(int fd, char *buckup, char *buffer, char *line)
-{
-	int	read_byts;
-
-	if (ft_check_buckup(buckup) == 1)
-		return (ft_update_buckup(line, buckup));
-	else
-		line = ft_strjoin(line, buckup);
-	if ((read_byts = read(fd, buffer, BUFFER_SIZE)) == 0)
+	while (buckup[i] && buckup[i] != '\n')
+		i++;
+	if (buckup[i] == '\n')
+		i++;
+	line = malloc(sizeof(char) * (i + 1));
+	i = 0;
+	while (buckup[i] && buckup[i] != '\n')
 	{
-		free(line);
-		return (NULL);
+		line[i] = buckup[i];
+		i++;
 	}
-	while (ft_check_line(buffer) != 1 && read_byts == BUFFER_SIZE)
-	{
-		line = ft_strjoin(line, buffer);
-		read_byts = read(fd, buffer, BUFFER_SIZE);
-	}
-	if (read_byts < BUFFER_SIZE)
-		buffer[read_byts] = '\0';
-	line = ft_strjoin(line, buffer);
-	ft_put_remain_buckup(buckup, buffer);
+	if (buckup[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buckup[BUFFER_SIZE + 1];
-	char		buffer[BUFFER_SIZE + 1];
+	static char	*buckup;
 	char		*line;
 
-	line = NULL;
-	if (fd < 0 || read(fd, line, 0) < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer[BUFFER_SIZE] = '\0';
-	line = ft_extract_line(fd, buckup, buffer, line);
+	buckup = ft_read_to_buckup(fd, buckup);
+	if (!buckup)
+		return (NULL);
+	line = ft_extract_line(buckup);
+	buckup = ft_update_buckup(buckup);
 	return (line);
 }
-
-
+/*
+*/
 int	main(void)
 {
 	int		fd;
 	char	*line;
 
 	//int fd = open("files/big_line_no_nl", O_RDWR, 0666);
-	fd = open("ff", O_RDWR, 0666);
+	fd = open("../text", O_RDWR, 0666);
 	//int fd = open("test2", O_RDWR, 0666);
-	if (fd == -1)
-		return (0);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -86,5 +72,3 @@ int	main(void)
 	}
 	close(fd);
 }
-
-
