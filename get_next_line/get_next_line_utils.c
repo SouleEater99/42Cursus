@@ -5,92 +5,110 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 17:38:20 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/02 17:50:39 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/12/04 16:50:53 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/12/04 16:51:49 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_check_line(char *buffer)
+int     ft_strlen(char *str)
 {
-	while (*buffer)
-		if (*buffer++ == '\n')
-			return (1);
-	return (0);
+        int     i;
+
+        i = 0;
+        if (!str)
+            return (0);
+        while (str[i])
+            i++;
+        return (i);
 }
 
-void	ft_put_remain_buckup(char *buckup, char *buffer)
+int     ft_check_nl(char *buffer)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (buffer[i])
-		if (buffer[i++] == '\n')
-			break ;
-	while (buffer[i])
-		buckup[j++] = buffer[i++];
-	buckup[j] = '\0';
+        if (!buffer)
+            return (0);
+        while (*buffer)
+            if (*buffer++ == '\n')
+                return (1);
+        return (0);
 }
 
-char	*ft_update_buckup(char *line, char *buckup)
+char    *ft_strjoin(char *buckup, char *buffer)
 {
-	int	i;
-	int	j;
+        char    *new_buckup;
+        int     i;
+        int     j;
 
-	i = 0;
-	j = 0;
-	while (buckup[i])
-		if (buckup[i++] == '\n')
-			break ;
-	line = malloc(i + 1);
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (buckup[i])
-	{
-		line[i] = buckup[i];
-		if (buckup[i++] == '\n')
-			break ;
-	}
-	line[i] = '\0';
-	while (buckup[i])
-		buckup[j++] = buckup[i++];
-	buckup[j] = '\0';
-	return (line);
+        i = -1;
+        j = 0;
+        if (!buckup)
+        {
+                buckup = malloc(1);
+                buckup[0] = '\0';
+        }
+        if (!buckup && !buffer)
+            return (NULL);
+        new_buckup = malloc(ft_strlen(buckup) + ft_strlen(buffer) + 1);
+        if (!new_buckup)
+            return (NULL);
+        while (buckup[++i])
+            new_buckup[i] = buckup[i];
+        while (buffer[j])
+            new_buckup[i++] = buffer[j++];
+        new_buckup[i] = '\0';
+        free(buckup);
+        return (new_buckup);
 }
 
-char	*ft_strjoin(char *line, char *buffer)
+char    *ft_get_nl(char *buckup)
 {
-	int		i;
-	int		j;
-	char	*new_line;
+        int     i;
+        char    *line;
 
-	i = 0;
-	j = 0;
-	while (buffer[i])
-		if (buffer[i++] == '\n')
-			break ;
-	while (line && line[j])
-		j++;
-	new_line = malloc(j + i + 1);
-	new_line[i + j] = '\0';
-	i = 0;
-	while (line && line[i])
-	{
-		new_line[i] = line[i];
-		i++;
-	}
-	j = 0;
-	while (buffer[j])
-	{
-		new_line[i++] = buffer[j];
-		if (buffer[j++] == '\n')
-			break ;
-	}
-	if (line)
-		free(line);
-	return (new_line);
+        i = 0;
+        while (buckup[i] && buckup[i] != '\n')
+                i++;
+        if (buckup[i] == '\n')
+            i++;
+        line = malloc(i + 1);
+        if (!line)
+            return (NULL);
+        i = 0;
+        while (buckup[i] && buckup[i] != '\n')
+        {
+            line[i] = buckup[i];
+            i++;
+        }
+        if (buckup[i] == '\n')
+            line[i++] = '\n';
+        line[i] = '\0';
+        return (line);
+}
+
+char    *ft_get_remaind(char *buckup)
+{
+        char    *remaind;
+        int     i;
+        int     j;
+
+        i = 0;
+        j = 0;
+        if (!buckup)
+            return (NULL);
+        while (buckup[i] && buckup[i] != '\n')
+            i++;
+        if (buckup[i++] == '\0')
+        {
+                free(buckup);
+                return (NULL);
+        }
+        remaind = malloc(ft_strlen(buckup) - i + 1);
+        if (!remaind)
+            return (NULL);
+        while (buckup[i])
+            remaind[j++] = buckup[i++];
+        remaind[j] = '\0';
+        free(buckup);
+        return (remaind);
 }
