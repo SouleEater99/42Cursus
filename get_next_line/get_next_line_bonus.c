@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:45:04 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/05 10:43:42 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:40:17 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char *to_free)
 {
@@ -43,37 +43,51 @@ char	*get_buffer_line(int fd, char *buckup)
 
 char	*get_next_line(int fd)
 {
-	static char	*buckup;
+	static char	*buckup[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buckup = get_buffer_line(fd, buckup);
-	if (!buckup)
+	buckup[fd] = get_buffer_line(fd, buckup[fd]);
+	if (!buckup[fd])
 		return (NULL);
-	line = ft_get_nl(buckup);
-	buckup = ft_get_remaind(buckup);
+	line = ft_get_nl(buckup[fd]);
+	buckup[fd] = ft_get_remaind(buckup[fd]);
 	return (line);
 }
-/*
- *
+
+
+	/*
 int	main(void)
 {
 	int		fd = 0;
 	char	*line;
 
-//	fd = open("files/41_no_nl", O_RDWR , 0666);
-//	if (fd == -1)
-//			return (0);
+	fd = open("text", O_RDWR , 0666);
+	int fd2 = open("test2", O_RDWR , 0666);
+	if (fd == -1 || fd2 == -1)
+	    return (0);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd2);
+	printf("%s", line);
+	free(line);
+	
 	while((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
 		free(line);
 	}
+
+	while((line = get_next_line(fd2)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+
+	close (fd2);
 	close(fd);
 }
 
 */
-
-
-
