@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:43:27 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/04 16:54:20 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:51:19 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char	*get_buffer_line(int fd, char *buckup);
 char	*ft_strjoin(char *buckup, char *buffer);
 int		ft_check_nl(char *buffer);
 int		ft_strlen(char *str);
+char	*ft_free(char *to_free);
 
 #endif
