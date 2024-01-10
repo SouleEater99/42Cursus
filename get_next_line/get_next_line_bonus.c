@@ -6,11 +6,11 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:45:04 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/07 18:14:01 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:02:06 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char *to_free)
 {
@@ -55,23 +55,3 @@ char	*get_next_line(int fd)
 	buckup[fd] = ft_get_remaind(buckup[fd]);
 	return (line);
 }
-/*
- *
-int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = 0;
-	fd = open("tt", O_RDWR , 0666);
-	if (fd == -1)
-			return (0);
-	while((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-}
-
-*/

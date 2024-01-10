@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:45:04 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/07 18:05:36 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:02:51 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,3 @@ char	*get_next_line(int fd)
 	buckup = ft_get_remaind(buckup);
 	return (line);
 }
-/*
- *
-int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = 0;
-	fd = open("tt", O_RDWR , 0666);
-	if (fd == -1)
-			return (0);
-	while((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-}
-
-*/
