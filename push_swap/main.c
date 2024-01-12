@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/12 14:26:02 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:58:51 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	ft_sort_b_top(t_list **stack_a, t_list **stack_b)
     int		offset;
     int		size;
 
-    printf("++++HELLO TOP++++\n");
     bigger_a = ft_to_bigger(*stack_a); 
     bigger_b = ft_to_bigger(*stack_b);
     while (ft_offset(*stack_b, bigger_b) != 1 && ft_offset(*stack_b, bigger_b) != 0)
