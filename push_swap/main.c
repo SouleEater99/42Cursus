@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/12 16:58:51 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/12 17:45:36 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	ft_sort_b_top(t_list **stack_a, t_list **stack_b)
     }
 }
 
-void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
+void	ft_first_sort(t_list **stack_a, t_list **stack_b)
 {
     t_list	*bigger_a;
     t_list	*bigger_b;
@@ -160,8 +160,8 @@ int	main(int ac, char **av)
 {
     t_list	*stack_a = NULL;
     t_list	*stack_b = NULL;
+    t_list	*tail;
     t_list	*tmp;
-
 
     if (ft_check_paramters(ac, av) == -1)
     {
@@ -175,7 +175,9 @@ int	main(int ac, char **av)
 	printf("sa\n");
     }
     ft_split_stack(&stack_a, &stack_b);
-    ft_sort_stack(&stack_a, &stack_b);
+    ft_first_sort(&stack_a, &stack_b);
+    tail = stack_a;
+
 
 
 
