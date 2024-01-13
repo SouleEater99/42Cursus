@@ -10,7 +10,7 @@
 int     ft_check_is_number(char *str);
 int     ft_check_paramters(int  ac, char **av);
 int     ft_offset(t_list *stack, t_list *node);
-int     ft_compare_node(void *value1, void *value2);
+int     ft_compare_node(t_list *value1, t_list *value2);
 void    ft_swap(t_list **stack);
 void    ft_rotation(t_list **stack);
 void    ft_reverse_rotation(t_list **stack);

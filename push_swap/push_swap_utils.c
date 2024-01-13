@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/13 13:16:11 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:20:32 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ t_list  *ft_fill_stack_a(t_list *stack_a, int ac, char **av)
     return (stack_a);
 }
 
-int     ft_compare_node(void *value1, void *value2)
+int     ft_compare_node(t_list *value1, t_list *value2)
 {
-    if (*(int*)value1 > *(int*)value2)
+    if (ft_lstsize(value2) == 0)
+	return (1);
+    if (*(int*)value1->content > *(int*)value2->content)
 	return (1);
     return (0);
 }
@@ -87,11 +89,13 @@ t_list  *ft_to_bigger(t_list *stack)
     t_list      *tmp;
     t_list      *bigger;
 
+    if (ft_lstsize(stack) == 0)
+	return (NULL);
     tmp = stack;
     bigger = stack;
     while (tmp->next)
     {
-	if (!ft_compare_node(bigger->content, tmp->next->content))
+	if (!ft_compare_node(bigger, tmp->next))
 	    bigger = tmp->next;
 	tmp = tmp->next;
     }
@@ -122,9 +126,9 @@ void    ft_swap_top_element(t_list **stack_a, t_list **stack_b)
 
     if (*stack_b && *stack_a)
     {
-	a = ft_compare_node((*stack_a)->content, (*stack_a)->next->content);
+	a = ft_compare_node(*stack_a, (*stack_a)->next);
 	if ((*stack_b)->next)
-		b = ft_compare_node((*stack_b)->content, (*stack_b)->next->content);
+		b = ft_compare_node(*stack_b, (*stack_b)->next);
 	else
 	    b = 1;
 	if (a == 0 && b == 0)
