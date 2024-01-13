@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/13 15:37:04 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/13 15:51:16 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,28 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b, t_list bigger_b)
     offset = ft_offset(*stack_b, bigger_b);
     if (offset - 1 > size - offset + 1)
     {
-
+	while (ft_offset(*stack_b, bigger_b) != 1)
+	{
+		ft_rotation(stack_b);
+		printf("rb\n");
+		ft_swap_top_element(stack_a, stack_b);
+	}
+	ft_push(stack_a, stack_b);
+    	printf("pb\n")
+    }
+    else
+    {
+	while (ft_offset(*stack_b, bigger_b) != 1)
+	{
+           ft_swap_top_element(stack_a, stack_b);
+	   if (ft_offset(*stack_b, bigger_b) != 1)
+	   {
+	       ft_reverse_rotation(stack_a, stack_b);
+	   	printf("rrb\n");
+	   }
+	}
+	ft_push(stack_a, stack_b);
+    	printf("pb\n")
     }
 }
 
@@ -270,8 +291,6 @@ void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
 	else
 		ft_second_sort_b(stack_a, stack_b, bigger_b);
     }
-
-
 }
 
 int	main(int ac, char **av)
