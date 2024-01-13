@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/12 14:20:08 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/13 13:16:11 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,10 @@ void    ft_swap_top_element(t_list **stack_a, t_list **stack_b)
     if (*stack_b && *stack_a)
     {
 	a = ft_compare_node((*stack_a)->content, (*stack_a)->next->content);
-	b = ft_compare_node((*stack_b)->content, (*stack_b)->next->content);
+	if ((*stack_b)->next)
+		b = ft_compare_node((*stack_b)->content, (*stack_b)->next->content);
+	else
+	    b = 1;
 	if (a == 0 && b == 0)
 	{
 	    ft_swap(stack_b);

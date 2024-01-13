@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/12 17:45:36 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/13 13:28:35 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,32 @@ void	ft_first_sort(t_list **stack_a, t_list **stack_b)
     }
 }
 
+int	ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
+{
+    t_list	*tmp;
+
+    tmp = *stack_a;
+    if (tail != ft_lstlast(*stack_a) && ft_lstsize(*stack_b)) 
+	return (0);
+    while (tmp)
+    {
+	if (tmp->next && !ft_compare_node(tmp->content, tmp->next->content))
+		return (0);
+	tmp = tmp->next;
+    }
+    return (1);
+}
+
+void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
+{
+	int	check;
+
+   	check = ft_check_sort(stack_a, stack_b, tail);
+	//while ()
+
+
+}
+
 int	main(int ac, char **av)
 {
     t_list	*stack_a = NULL;
@@ -177,6 +203,8 @@ int	main(int ac, char **av)
     ft_split_stack(&stack_a, &stack_b);
     ft_first_sort(&stack_a, &stack_b);
     tail = stack_a;
+    tmp = ft_to_bigger(tail->next);
+    ft_second_sort(&stack_a, &stack_b, tail);
 
 
 
