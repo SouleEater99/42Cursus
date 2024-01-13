@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/13 18:45:55 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:02:45 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,6 +333,7 @@ int	main(int ac, char **av)
     printf("tail : %d\n", *(int*)tail->content);
     ft_second_sort(&stack_a, &stack_b, tail);
 
+///problem in check sort
 
 
 
