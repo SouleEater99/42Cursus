@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/14 13:15:29 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/14 15:56:53 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ int	ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
     tmp = *stack_a;
     while (tmp->next)
     {
-    	printf("HERE | tmp %d | next_tmp : %d\n",*(int*)tmp->content, *(int*)tmp->next->content);
+	printf("HERE | tmp %d | next_tmp : %d\n",*(int*)tmp->content, *(int*)tmp->next->content);
 	if (ft_compare_node(tmp, tmp->next))
 	    return (0);
 	tmp = tmp->next;
@@ -182,8 +182,10 @@ int	ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
 void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
 {
     t_list	*bigger_a;
+    t_list	*head;
 
     bigger_a = ft_to_bigger(tail->next);
+    head = *stack_a;
     while (ft_offset(*stack_a, tail) != 1)
     {
 	ft_rotation(stack_a);
@@ -192,11 +194,12 @@ void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     if (ft_offset(*stack_a, tail) == 1)
     {
 	ft_rotation(stack_a);
-	printf("ra\n");
+	printf("pa\n");
     }
     while (ft_offset(*stack_a, bigger_a) != 1)
     {
-	ft_second_swap_top_element(stack_a, stack_b);
+///	if ((*stack_a)->next != bigger_a) 
+	    ft_second_swap_top_element(stack_a, stack_b);
 	if (ft_offset(*stack_a, bigger_a) != 1)
 	{
 	    ft_push(stack_a, stack_b);
@@ -205,7 +208,7 @@ void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     }
     ft_push(stack_a, stack_b);
     printf("pb\n");
-    while (ft_offset(*stack_a, tail) != 1)
+    while (ft_offset(*stack_a, head) != 1)
     {
 	ft_reverse_rotation(stack_a);
 	printf("rra\n");
@@ -250,7 +253,7 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
     bigger_b = ft_to_bigger(*stack_b);
     size = ft_lstsize(*stack_b);
     offset = ft_offset(*stack_b, bigger_b);
-    if (offset - 1 > size - offset + 1)
+    if (offset - 1 < size - offset + 1)
     {
 	while (ft_offset(*stack_b, bigger_b) != 1)
 	{
@@ -265,7 +268,6 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
     {
 	while (ft_offset(*stack_b, bigger_b) != 1)
 	{
-	    ft_second_swap_top_element(stack_a, stack_b);
 	    if (ft_offset(*stack_b, bigger_b) != 1)
 	    {
 		ft_reverse_rotation(stack_b);
@@ -288,7 +290,10 @@ void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
     bigger_a = ft_to_bigger(tail->next);
     bigger_b = ft_to_bigger(*stack_b);
     if (ft_compare_node(bigger_a, bigger_b) && tail->next == bigger_a)
+    {
 	ft_second_swap_top_element(stack_a, stack_b);
+	printf("here\n");
+    }
     while (!ft_check_sort(stack_a, stack_b, tail))
     {
 	bigger_a = ft_to_bigger(tail->next);
@@ -304,7 +309,9 @@ void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
 	}
 	else
 	    ft_second_sort_b(stack_a, stack_b);
-    printf("ft_check_sort : %d\n",ft_check_sort(stack_a, stack_b, tail));
+	printf("ft_check_sort : %d\n",ft_check_sort(stack_a, stack_b, tail));
+	printf ("offset: %d \n", ft_offset(*stack_a, bigger_a));
+	printf("size of b: %d\n",ft_lstsize(*stack_b));
     }
 }
 
