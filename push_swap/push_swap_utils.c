@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/13 17:20:32 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/14 09:51:17 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,19 @@ t_list  *ft_fill_stack_a(t_list *stack_a, int ac, char **av)
 
     i = 1;
     tmp = (int *)malloc(sizeof(int));
+    if (!tmp)
+	return (NULL);
     *tmp = ft_atoi(av[i++]);
     stack_a = ft_lstnew(tmp);
     while (i < ac)
     {
 	tmp = NULL;
 	tmp = (int *)malloc(sizeof(int));
+	if (!tmp)
+	{
+	    printf("faild allocation \n");
+		return (NULL);
+	}
 	*tmp = ft_atoi(av[i++]);
 	current = ft_lstnew(tmp);
 	ft_lstadd_back(&stack_a, current);
@@ -79,6 +86,8 @@ int     ft_compare_node(t_list *value1, t_list *value2)
 {
     if (ft_lstsize(value2) == 0)
 	return (1);
+    if (ft_lstsize(value1) == 0)
+	return (0);
     if (*(int*)value1->content > *(int*)value2->content)
 	return (1);
     return (0);
@@ -107,7 +116,7 @@ int     ft_offset(t_list *stack, t_list *node)
     int i;
 
     i = 1;
-    if (!stack)
+    if (ft_lstsize(stack) == 0)
 	return (0);
     while (stack != node)
     {

@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/13 19:02:45 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/14 09:51:21 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_sort_a_bottom(t_list **stack_a, t_list **stack_b)
 	if (ft_offset(*stack_a, bigger_a) != 1)
 	    ft_swap_top_element(stack_a, stack_b);
     }
+    printf("===BYE ft_sort_a_bottom===\n");
 }
 
 void	ft_sort_a_top(t_list **stack_a, t_list **stack_b)
@@ -62,6 +63,7 @@ void	ft_sort_a_top(t_list **stack_a, t_list **stack_b)
 	if (ft_offset(*stack_a, bigger_a) != 1)
 	    ft_swap_top_element(stack_a, stack_b);
     }
+    printf("===BYE ft_sort_a_top===\n");
 }
 
 void	ft_sort_b_bottom(t_list **stack_a, t_list **stack_b)
@@ -93,6 +95,7 @@ void	ft_sort_b_bottom(t_list **stack_a, t_list **stack_b)
 	ft_push(stack_b, stack_a);
 	printf("pa\n");
     }
+    printf("===BYE ft_sort_b_bottom===\n");
 }
 
 void	ft_sort_b_top(t_list **stack_a, t_list **stack_b)
@@ -124,6 +127,7 @@ void	ft_sort_b_top(t_list **stack_a, t_list **stack_b)
 	ft_push(stack_b, stack_a);
 	printf("pa\n");
     }
+    printf("===BYE ft_sort_b_top===\n");
 }
 
 void	ft_first_sort(t_list **stack_a, t_list **stack_b)
@@ -154,6 +158,7 @@ void	ft_first_sort(t_list **stack_a, t_list **stack_b)
 	else
 	    ft_sort_b_top(stack_a, stack_b);
     }
+    printf("===BYE ft_first_sort===\n");
 }
 
 int	ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
@@ -161,15 +166,15 @@ int	ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
     t_list	*tmp;
 
     tmp = *stack_a;
-    if (tail == ft_lstlast(*stack_a) && ft_lstsize(*stack_b) == 0) 
-	return (1);
     while (tmp)
     {
 	if (tmp->next && ft_compare_node(tmp, tmp->next))
 	    return (0);
 	tmp = tmp->next;
     }
-    return (1);
+    if (tail == ft_lstlast(*stack_a) && ft_lstsize(*stack_b) == 0)
+	return (1);
+    return (0);
 }
 
 void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
@@ -189,7 +194,7 @@ void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     }
     while (ft_offset(*stack_a, bigger_a) != 1)
     {
-	ft_swap_top_element(stack_a, stack_b);
+	//ft_swap_top_element(stack_a, stack_b);
 	if (ft_offset(*stack_a, bigger_a) != 1)
 	{
 	    ft_push(stack_a, stack_b);
@@ -205,6 +210,7 @@ void	ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     }
     ft_push(stack_b, stack_a);
     printf("pa\n");
+    printf("===BYE ft_second_sort_top_a===\n");
 }
 
 void	ft_second_sort_bottom_a(t_list **stack_a, t_list **stack_b, t_list *tail)
@@ -228,11 +234,9 @@ void	ft_second_sort_bottom_a(t_list **stack_a, t_list **stack_b, t_list *tail)
 	}
 	ft_push(stack_a, stack_b);
 	printf("pb\n");
-	printf(" before swap %d\n",*(int*)(*stack_a)->content);
 	//ft_swap_top_element(stack_a, stack_b);
-	printf(" after swap %d\n",*(int*)(*stack_a)->content);
     }
-
+    printf("===BYE ft_second_sort_bottom_a===\n");
 }
 
 void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
@@ -244,14 +248,13 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
     bigger_b = ft_to_bigger(*stack_b);
     size = ft_lstsize(*stack_b);
     offset = ft_offset(*stack_b, bigger_b);
-    printf("here last| offset : %d | size-b:%d\n",offset,size);
     if (offset - 1 > size - offset + 1)
     {
 	while (ft_offset(*stack_b, bigger_b) != 1)
 	{
 	    ft_rotation(stack_b);
 	    printf("rb\n");
-	    ft_swap_top_element(stack_a, stack_b);
+	   // ft_swap_top_element(stack_a, stack_b);
 	}
 	ft_push(stack_b, stack_a);
 	printf("pa\n");
@@ -260,7 +263,7 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
     {
 	while (ft_offset(*stack_b, bigger_b) != 1)
 	{
-	    ft_swap_top_element(stack_a, stack_b);
+	    //ft_swap_top_element(stack_a, stack_b);
 	    if (ft_offset(*stack_b, bigger_b) != 1)
 	    {
 		ft_reverse_rotation(stack_b);
@@ -270,7 +273,7 @@ void	ft_second_sort_b(t_list **stack_a, t_list **stack_b)
 	ft_push(stack_b, stack_a);
 	printf("pa\n");
     }
-    printf("+++++HELLO++++\n");
+    printf("===BYE ft_second_sort_b===\n");
 }
 
 void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
@@ -280,20 +283,15 @@ void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
     t_list	*bigger_a;
     t_list	*bigger_b;
 
-    bigger_a = ft_to_bigger(tail->next);
-    bigger_b = ft_to_bigger(*stack_b);
+
     while (!ft_check_sort(stack_a, stack_b, tail))
     {
-	printf("compara:%d\n", ft_compare_node(bigger_a, bigger_b));
+	bigger_a = ft_to_bigger(tail->next);
+   	 bigger_b = ft_to_bigger(*stack_b);
 	if (ft_compare_node(bigger_a, bigger_b) || ft_lstsize(*stack_b) == 0)
 	{
 	    size = ft_lstsize(*stack_a);
 	    offset = ft_offset(*stack_a, bigger_a);
-	    printf("RA_size_a :%d \n", ft_lstsize(*stack_a));
-	    printf("RA_size_b :%d \n", ft_lstsize(*stack_b));
-	    printf("RA_bigger_a :%d | offset_a: %d\n", *(int*)bigger_a->content, ft_offset(*stack_a, bigger_a));
-	    printf("RA_bigger_b :%d | offset_b: %d\n", *(int*)bigger_b->content, ft_offset(*stack_b, bigger_b));
-	    printf("offset_tail : %d | offset: %d \n", ft_offset(*stack_a, tail), offset);
 	    if (offset + ft_offset(*stack_a, tail) < size - offset + 1)
 		ft_second_sort_top_a(stack_a, stack_b, tail);// NEW FUNCTION
 	    else
@@ -303,9 +301,6 @@ void	ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
 	    ft_second_sort_b(stack_a, stack_b);
 	printf("size_a :%d \n", ft_lstsize(*stack_a));
 	printf("size_b :%d \n", ft_lstsize(*stack_b));
-	printf("bigger_a :%d | offset_a: %d\n", *(int*)bigger_a->content, ft_offset(*stack_a, bigger_a));
-	printf("bigger_b :%d | offset_b: %d\n", *(int*)bigger_b->content, ft_offset(*stack_b, bigger_b));
-	printf("check sort : %d|size_b:%d \n",ft_check_sort(stack_a, stack_b, tail), ft_lstsize(*stack_b));
     }
 }
 
