@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/14 09:51:17 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:03:56 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,39 @@ void    ft_swap_top_element(t_list **stack_a, t_list **stack_b)
 	}
     }
 }
+
+
+void    ft_second_swap_top_element(t_list **stack_a, t_list **stack_b)
+{
+    int a;
+    int b;
+
+    if (*stack_b && *stack_a)
+    {
+	a = ft_compare_node(*stack_a, (*stack_a)->next);
+	if ((*stack_b)->next)
+		b = ft_compare_node(*stack_b, (*stack_b)->next);
+	else
+	    b = 1;
+	if (a == 1 && b == 0)
+	{
+	    ft_swap(stack_b);
+	    ft_swap(stack_a);
+	    printf("ss\n");
+	}
+	else if (a == 1 && b == 1)
+	{
+	    ft_swap(stack_a);
+	    printf("sa\n");
+	}
+	else if (a == 0 && b == 0)
+	{
+	    ft_swap(stack_b);
+	    printf("sb\n");
+	}
+    }
+}
+
 
 void    ft_split_stack(t_list **stack_a, t_list **stack_b)
 {

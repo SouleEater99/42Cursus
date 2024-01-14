@@ -17,6 +17,7 @@ void    ft_reverse_rotation(t_list **stack);
 void    ft_push(t_list **stack_1, t_list **stack_2);
 void    ft_split_stack(t_list **stack_a, t_list **stack_b);
 void    ft_swap_top_element(t_list **stack_a, t_list **stack_b);
+void    ft_second_swap_top_element(t_list **stack_a, t_list **stack_b);
 t_list  *ft_to_bigger(t_list *stack);
 t_list  *ft_fill_stack_a(t_list *stack_a, int ac, char **av);
 
