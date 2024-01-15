@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/14 12:03:56 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:51:38 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ void    ft_split_stack(t_list **stack_a, t_list **stack_b)
     len = ft_lstsize(*stack_a);
     while (i < (len / 2))
     {
+	ft_second_swap_top_element(stack_a, stack_b);
 	ft_push(stack_a, stack_b);
 	printf("pb\n");
 	i++;

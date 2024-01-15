@@ -20,17 +20,16 @@ void    ft_swap_top_element(t_list **stack_a, t_list **stack_b);
 void    ft_second_swap_top_element(t_list **stack_a, t_list **stack_b);
 t_list  *ft_to_bigger(t_list *stack);
 t_list  *ft_fill_stack_a(t_list *stack_a, int ac, char **av);
-
-
-
-
-
-
-
-
-
-
-
+void    ft_sort_a_bottom(t_list **stack_a, t_list **stack_b);
+void    ft_sort_a_top(t_list **stack_a, t_list **stack_b);
+void    ft_sort_b_bottom(t_list **stack_a, t_list **stack_b);
+void    ft_sort_b_top(t_list **stack_a, t_list **stack_b);
+void    ft_first_sort(t_list **stack_a, t_list **stack_b);
+int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail);
+void    ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail);
+void    ft_second_sort_bottom_a(t_list **stack_a, t_list **stack_b, t_list *tail);
+void    ft_second_sort_b(t_list **stack_a, t_list **stack_b);
+void    ft_second_sort(t_list **stack_a, t_list **stack_b, t_list *tail);
 
 
 
