@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:03:01 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/15 17:58:47 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:58:54 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void    ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     }
     ft_push(stack_b, stack_a);
     printf("pa\n");
-   // printf("===BYE ft_second_sort_top_a===\n");
+   printf("===BYE ft_second_sort_top_a===\n");
 }
 
 void    ft_second_sort_bottom_a(t_list **stack_a, t_list **stack_b, t_list *tail)
