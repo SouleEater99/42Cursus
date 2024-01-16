@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/16 17:01:27 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:18:40 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int	main(int ac, char **av)
 
 
     printf("ft_check_sort : %d\n",ft_check_sort(&stack_a, &stack_b, tail));
-     /*
- //   t_list	*tmp;
+     ///*
+//   t_list	*tmp;
     printf("---------------------------------\n");
     tmp = stack_a;
     while (tmp)
