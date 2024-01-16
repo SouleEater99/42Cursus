@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:03:14 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/15 17:45:52 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:00:04 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    ft_sort_a_bottom(t_list **stack_a, t_list **stack_b)
         else
             printf("rra\n");
     }
-    printf("===BYE ft_sort_a_bottom===\n");
+   // printf("===BYE ft_sort_a_bottom===\n");
 }
 
 void    ft_sort_a_top(t_list **stack_a, t_list **stack_b)
@@ -62,7 +62,7 @@ void    ft_sort_a_top(t_list **stack_a, t_list **stack_b)
         else
             printf("ra\n");
     }
-    printf("===BYE ft_sort_a_top===\n");
+    //printf("===BYE ft_sort_a_top===\n");
 }
 
 void    ft_sort_b_bottom(t_list **stack_a, t_list **stack_b)
@@ -94,7 +94,7 @@ void    ft_sort_b_bottom(t_list **stack_a, t_list **stack_b)
         ft_push(stack_b, stack_a);
         printf("pa\n");
     }
-    printf("===BYE ft_sort_b_bottom===\n");
+   // printf("===BYE ft_sort_b_bottom===\n");
 }
 
 void    ft_sort_b_top(t_list **stack_a, t_list **stack_b)
@@ -126,7 +126,7 @@ void    ft_sort_b_top(t_list **stack_a, t_list **stack_b)
         ft_push(stack_b, stack_a);
         printf("pa\n");
     }
-    printf("===BYE ft_sort_b_top===\n");
+   // printf("===BYE ft_sort_b_top===\n");
 }
 
 void    ft_first_sort(t_list **stack_a, t_list **stack_b)
@@ -156,5 +156,5 @@ void    ft_first_sort(t_list **stack_a, t_list **stack_b)
         else
             ft_sort_b_top(stack_a, stack_b);
     }
-    printf("===BYE ft_first_sort===\n");
+  //  printf("===BYE ft_first_sort===\n");
 }

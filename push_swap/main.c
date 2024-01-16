@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/15 12:47:52 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:01:27 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	main(int ac, char **av)
 	printf("sa\n");
     }
     ft_split_stack(&stack_a, &stack_b);
-
+    ft_first_sort(&stack_a, &stack_b);
+/*
     t_list	*tmp;
     printf("---------------------------------\n");
     tmp = stack_a;
@@ -52,13 +53,16 @@ int	main(int ac, char **av)
 	printf("stack_B :%d \n", *(int*)tmp->content);
 	tmp = tmp->next;
     }
+*/
 
 
-
-
-    ft_first_sort(&stack_a, &stack_b);
+   // ft_rotation(&stack_a);
     tail = stack_a;
-    printf("tail: %d\n", *(int*)tail->content);
+
+   // printf("tail: %d\n", *(int*)tail->content);
+  //  tmp = ft_to_bigger(tail->next);
+   // printf("bigger_a:%d\n", *(int*)tmp->content);
+   // ft_second_sort_top_a(&stack_a, &stack_b, tail);
     ft_second_sort(&stack_a, &stack_b, tail);
 
 
@@ -71,7 +75,7 @@ int	main(int ac, char **av)
 
 
     printf("ft_check_sort : %d\n",ft_check_sort(&stack_a, &stack_b, tail));
-    // /*
+     /*
  //   t_list	*tmp;
     printf("---------------------------------\n");
     tmp = stack_a;
