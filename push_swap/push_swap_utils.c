@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/18 12:09:06 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:19:13 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,8 +232,7 @@ void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b)
 		printf("rrb\n");
 	    }
 	}
-	ft_push(stack_a, stack_b);
-	printf("pb\n");
+	ft_sort_stack_b(stack_a, stack_b);
 	offset = ft_offset(*stack_b, head);
 	if (ft_lstsize(*stack_b) - offset + 1 > offset - 1)
 	    while (ft_offset(*stack_b, head) != 1)
@@ -252,8 +251,7 @@ void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b)
     }
     else
     {
-	ft_push(stack_a, stack_b);
-	printf("pb\n");
+	ft_sort_stack_b(stack_a, stack_b);
     }
 }
 
