@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/18 18:21:56 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:22:22 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_sort_3(t_list **stack_a)
 	    ft_swap(stack_a, 'a');
 }
 
-/ /*
+// /*
 
 t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
 {
