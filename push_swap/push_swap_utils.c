@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/16 16:10:43 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:09:06 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_list  *ft_fill_stack_a(t_list *stack_a, int ac, char **av)
 	if (!tmp)
 	{
 	    printf("faild allocation \n");
-		return (NULL);
+	    return (NULL);
 	}
 	*tmp = ft_atoi(av[i++]);
 	current = ft_lstnew(tmp);
@@ -137,7 +137,7 @@ void    ft_swap_top_element(t_list **stack_a, t_list **stack_b)
     {
 	a = ft_compare_node(*stack_a, (*stack_a)->next);
 	if ((*stack_b)->next)
-		b = ft_compare_node(*stack_b, (*stack_b)->next);
+	    b = ft_compare_node(*stack_b, (*stack_b)->next);
 	else
 	    b = 1;
 	if (a == 0 && b == 0)
@@ -169,7 +169,7 @@ void    ft_second_swap_top_element(t_list **stack_a, t_list **stack_b)
     {
 	a = ft_compare_node(*stack_a, (*stack_a)->next);
 	if ((*stack_b)->next)
-		b = ft_compare_node(*stack_b, (*stack_b)->next);
+	    b = ft_compare_node(*stack_b, (*stack_b)->next);
 	else
 	    b = 1;
 	if (a == 1 && b == 0)
@@ -191,6 +191,71 @@ void    ft_second_swap_top_element(t_list **stack_a, t_list **stack_b)
     }
 }
 
+t_list  *ft_get_pos_b(t_list **stack_a, t_list **stack_b)
+{
+    t_list      *tmp;
+
+    tmp = *stack_b;
+    if (ft_lstsize(tmp) < 2)
+	return (NULL);
+    while (tmp)
+    {
+	if (ft_compare_node(*stack_a, tmp))
+	    return (tmp);
+	tmp = tmp->next;
+    }
+    return (ft_lstlast(*stack_b));
+}
+
+void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b)
+{
+    int offset;
+    t_list      *head;
+    t_list      *pos;
+
+    head = *stack_b;
+    pos = ft_get_pos_b(stack_a, stack_b);
+    offset = ft_offset(*stack_b, pos);
+    if (ft_lstsize(*stack_b) >= 2 && offset != 1)
+    {
+	if (ft_lstsize(*stack_b) - offset + 1 > offset - 1)
+	    while (ft_offset(*stack_b, pos) != 1)
+	    {
+		ft_rotation(stack_b);
+		printf("rb\n");
+	    }
+	else
+	{
+	    while (ft_offset(*stack_b, pos) != 1)
+	    {
+		ft_reverse_rotation(stack_b);
+		printf("rrb\n");
+	    }
+	}
+	ft_push(stack_a, stack_b);
+	printf("pb\n");
+	offset = ft_offset(*stack_b, head);
+	if (ft_lstsize(*stack_b) - offset + 1 > offset - 1)
+	    while (ft_offset(*stack_b, head) != 1)
+	    {
+		ft_rotation(stack_b);
+		printf("rb\n");
+	    }
+	else
+	{
+	    while (ft_offset(*stack_b, head) != 1)
+	    {
+		ft_reverse_rotation(stack_b);
+		printf("rrb\n");
+	    }
+	}
+    }
+    else
+    {
+	ft_push(stack_a, stack_b);
+	printf("pb\n");
+    }
+}
 
 void    ft_split_stack(t_list **stack_a, t_list **stack_b)
 {
@@ -202,8 +267,7 @@ void    ft_split_stack(t_list **stack_a, t_list **stack_b)
     len = ft_lstsize(*stack_a);
     while (i < (len / 2))
     {
-	ft_push(stack_a, stack_b);
-	printf("pb\n");
+	ft_sort_stack_b(stack_a, stack_b);
 	i++;
     }
 }
