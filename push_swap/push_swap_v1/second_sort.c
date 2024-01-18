@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 17:03:01 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/18 12:18:25 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:29:35 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,13 @@ void    ft_second_sort_top_a(t_list **stack_a, t_list **stack_b, t_list *tail)
     {
 	ft_second_swap_top_element(stack_a, stack_b);
 	if (ft_offset(*stack_a, bigger_a) != 1)
-   		ft_sort_stack_b(stack_a, stack_b);
+	{
+	    ft_push(stack_a, stack_b);
+	    printf("pb\n");
+	}
     }
-   ft_sort_stack_b(stack_a, stack_b);
+    ft_push(stack_a, stack_b);
+    printf("pb\n");
     if (ft_lstsize(*stack_a) - ft_offset(*stack_a, head) + 1 < ft_offset(*stack_a, head) - 1)
     {
 	while (ft_offset(*stack_a, head) != 1)
@@ -115,7 +119,8 @@ void    ft_second_sort_bottom_a(t_list **stack_a, t_list **stack_b, t_list *tail
 	    ft_swap(stack_a);
 	    printf("sa\n");
 	}
-   	ft_sort_stack_b(stack_a, stack_b);
+	ft_push(stack_a, stack_b);
+	printf("pb\n");
 	ft_second_swap_top_element(stack_a, stack_b);
     }
    // printf("===BYE ft_second_sort_bottom_a===\n");
