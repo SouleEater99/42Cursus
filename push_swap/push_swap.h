@@ -20,8 +20,8 @@ t_list  *ft_to_bigger(t_list *stack);
 t_list  *ft_to_lower(t_list *stack);
 t_list  *ft_fill_stack_a(t_list *stack_a, char **av, char c);
 int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail);
-t_list  *ft_get_pos_b(t_list **stack_a, t_list **stack_b);
-void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b);
+t_list  *ft_get_pos_b(t_list *target, t_list **stack_b);
+void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list * near);
 
 
 #endif

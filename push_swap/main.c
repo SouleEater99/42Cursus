@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 10:05:15 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:53:59 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_sort_3(t_list **stack_a)
 	    ft_swap(stack_a, 'a');
 }
 
-// /*
 int	ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target)
 {
 	int	top_a;
@@ -49,34 +48,43 @@ int	ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target)
 	int	bottom_b;
 	int	offset;
 
-	offset = ft_offset(stack_a, target);
+	offset = ft_offset(*stack_a, target);
 	top_a = offset - 1;
 	bottom_a = ft_lstsize(*stack_a) - offset + 1;
-	offset = ft_offset(stack_a, ft_get_pos_b(target, stack_b));
+	offset = ft_offset(*stack_b, ft_get_pos_b(target, stack_b));
 	top_b = offset - 1;
 	bottom_b = ft_lstsize(*stack_b) - offset + 1;
 	if (bottom_a > top_a && bottom_b > top_b)
 	{
-		if (top_a < top_b)
-		    return ((top_b - top_a) + top_b);
+	    	if (top_a == 0)
+		    return (top_b + 1);
+		else if (top_b == 0)
+		    return (top_a + 1);
+		else if (top_a < top_b)
+		    return ((top_b - top_a) + top_b + 1);
 		else if (top_a > top_b)
-		    return ((top_a - top_b) + top_a);
+		    return ((top_a - top_b) + top_a + 1);
 		else
-		    return(top_a);
+		    return(top_a + 1);
 	}
 	else if (bottom_a <= top_a && bottom_b <= top_b)
 	{
-		if (bottom_a < bottom_b)
-		    return ((bottom_b - bottom_a) + bottom_b);
+	    	if (bottom_a == 0)
+		    return (bottom_b + 1);
+		else if (bottom_b == 0)
+		    return (bottom_a + 1);
+		else if (bottom_a < bottom_b)
+		    return ((bottom_b - bottom_a) + bottom_b + 1);
 		else if (bottom_a > bottom_b)
-		    return ((bottom_a - bottom_b) + bottom_a);
+		    return ((bottom_a - bottom_b) + bottom_a + 1);
 		else
-		    return(bottom_a);
+		    return(bottom_a + 1);
 	}
 	else if (bottom_a > top_a && bottom_b < top_b)
-		return(top_a + bottom_b);
+		return(top_a + bottom_b + 1);
 	else if (bottom_a <= top_a && bottom_b >= top_b)
-	    return (bottom_a + top_b);
+	    return (bottom_a + top_b + 1);
+	return (0);
 }
 
 
@@ -85,22 +93,26 @@ t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
 	t_list	*tmp;
 	t_list	*save;
 	int	lower;
-	int	next_lower;
-	int	offset;
 
 	tmp = *stack_a;
-	lower = ft
+	lower = ft_move_number(stack_a, stack_b, tmp);
+	save = tmp;
 	while (tmp)
 	{
-		offset = ft_offset(stack_a, tmp);
-		
+	    if (lower > ft_move_number(stack_a, stack_b, tmp))
+	    {
+		save = tmp;
+		lower = ft_move_number(stack_a, stack_b, tmp);
+	    }
+	    tmp = tmp->next;
 	}
+	return (save);
 }
 
+// /*
 void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*near;
-	int	offset;
 
 	if (ft_lstsize(*stack_a) <= 3)
 	    ft_sort_3(stack_a);
@@ -108,9 +120,13 @@ void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 	{
 		while (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_b) < 2)
 		    ft_push(stack_a, stack_b, 'b');
-		near = ft_near_node(stack_a, stack_b);
-		offset = ft_offset(stack_a);
-
+		if (!ft_compare_node(*stack_b, (*stack_b)->next))
+			ft_swap(stack_b, 'b');
+		while (ft_lstsize(*stack_a) > 3)
+		{
+		    near = ft_near_node(stack_a, stack_b);
+		    ft_sort_stack_b(stack_a, stack_b, near);	
+		}
 	}
 }
 
@@ -144,6 +160,7 @@ int	main(int ac, char **av)
 
 
 //	/*
+	ft_sort_stack(&stack_a, &stack_b);
 	t_list    *tmp;
 	printf("---------------------------------\n");
 	tmp = stack_a;

@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 09:37:40 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:55:26 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,34 +165,53 @@ t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
     return (ft_lstlast(*stack_b));
 }
 
-void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b)
+void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list *near)
 {
-    int offset;
-    t_list      *head;
-    t_list      *pos;
+    int 	offset_a;
+    int 	offset_b;
+    int		size_a;
+    int		size_b;
+    t_list	*pos;
 
-    head = *stack_b;
-    pos = ft_get_pos_b(*stack_a, stack_b);
-    offset = ft_offset(*stack_b, pos);
-    if (ft_lstsize(*stack_b) >= 2 && offset != 1)
+    pos = ft_get_pos_b(near, stack_b);
+    offset_a = ft_offset(*stack_a, near);
+    offset_b = ft_offset(*stack_b, pos);
+    size_a = ft_lstsize(*stack_a);
+    size_b = ft_lstsize(*stack_b);
     {
-	if (ft_lstsize(*stack_b) - offset + 1 > offset - 1)
-	    while (ft_offset(*stack_b, pos) != 1)
-		ft_rotation(stack_b, 'b');
-	else
-	    while (ft_offset(*stack_b, pos) != 1)
-		ft_reverse_rotation(stack_b, '2');
-	ft_push(stack_a, stack_b, 'b');
-	offset = ft_offset(*stack_b, head);
-	if (ft_lstsize(*stack_b) - offset + 1 > offset - 1)
-	    while (ft_offset(*stack_b, head) != 1)
-		ft_rotation(stack_b, 'b');
-	else
-	    while (ft_offset(*stack_b, head) != 1)
-		ft_reverse_rotation(stack_b, 'b');
+	if (size_a - offset_a + 1 > offset_a - 1 && 
+		size_b - offset_b + 1 > offset_b - 1)
+	{
+    		while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
+		{
+		    	ft_rotation(stack_a, 'r');
+			ft_rotation(stack_b, '2');
+		}
+	}
+	else if (size_a - offset_a + 1 <= offset_a - 1 && 
+		size_b - offset_b + 1 <= offset_b - 1)
+	{
+    		while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
+		{
+		    	ft_reverse_rotation(stack_a, 'r');
+			ft_reverse_rotation(stack_b, '2');
+		}
+	}
     }
-    else
-	ft_push(stack_a, stack_b, 'b');
+    	if (size_a - offset_a + 1 > offset_a - 1) 
+    		while (ft_offset(*stack_a, near) != 1)
+			ft_rotation(stack_a, 'a');
+	else if (size_a - offset_a + 1 <= offset_a - 1)
+    		while (ft_offset(*stack_a, near) != 1)
+ 			ft_reverse_rotation(stack_a, 'a');
+    	if (size_b - offset_b + 1 > offset_b - 1) 
+    		while (ft_offset(*stack_b, pos) != 1)
+			ft_rotation(stack_b, 'b');
+	else if (size_b - offset_b + 1 <= offset_b - 1)
+	    while (ft_offset(*stack_b, pos) != 1)
+		ft_reverse_rotation(stack_b, 'b');
+	if (ft_offset(*stack_a, near) == 1)
+	    ft_push(stack_a, stack_b, 'b');
 }
 
 int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
@@ -202,11 +221,11 @@ int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)
     tmp = *stack_a;
     while (tmp->next && ft_lstsize(tail) != 1)
     {
-        if (ft_compare_node(tmp, tmp->next))
-            return (0);
-        tmp = tmp->next;
+	if (ft_compare_node(tmp, tmp->next))
+	    return (0);
+	tmp = tmp->next;
     }
     if (ft_lstsize(*stack_b) == 0 && (tail == NULL  || tail == ft_lstlast(*stack_a)))
-        return (1);
+	return (1);
     return (0);
 }
