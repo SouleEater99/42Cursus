@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 16:26:27 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:48:24 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,20 @@ t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
     return (save);
 }
 
-// /*
+ /*
+void	ft_sort_stack_a(t_list **stack_a, t_list **stack_b)
+{
+
+    int	offset;
+
+    offset = ft_offset(*stack_a, ft_get_pos_b(*stack_b, stack_a));
+	while (ft_lstsize(*stack_b) > 0)
+	{
+		
+	}
+
+}
+// */
 void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
     t_list	*near;
@@ -123,7 +136,7 @@ void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 	    ft_push(stack_a, stack_b, 'b');
 	if (!ft_compare_node(*stack_b, (*stack_b)->next))
 	    ft_swap(stack_b, 'b');
-	while (ft_lstsize(*stack_a) > 3)
+	while (ft_lstsize(*stack_a) > 0)
 	{
 	    near = ft_near_node(stack_a, stack_b);
 	    ft_sort_stack_b(stack_a, stack_b, near);	
@@ -138,7 +151,6 @@ void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
     }
 }
 
-// */
 
 int	main(int ac, char **av)
 {
