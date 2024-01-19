@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 11:55:26 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:48:47 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int     ft_check_paramters(char **av, char c)
     int tmp;
 
     if (c == 's')
-    	i = 0;
+	i = 0;
     else
 	i = 1;
     while (av[i])
@@ -64,7 +64,7 @@ t_list  *ft_fill_stack_a(t_list *stack_a, char **av, char c)
     t_list      *current;
 
     if (c == 's')
-    	i = 0;
+	i = 0;
     else
 	i = 1;
     tmp = (int *)malloc(sizeof(int));
@@ -102,14 +102,14 @@ t_list  *ft_to_lower(t_list *stack)
     t_list      *lower;
 
     if (ft_lstsize(stack) == 0)
-        return (NULL);
+	return (NULL);
     tmp = stack;
     lower = stack;
     while (tmp->next)
     {
-        if (ft_compare_node(lower, tmp->next))
-            lower = tmp->next;
-        tmp = tmp->next;
+	if (ft_compare_node(lower, tmp->next))
+	    lower = tmp->next;
+	tmp = tmp->next;
     }
     return (lower);
 }
@@ -120,14 +120,14 @@ t_list  *ft_to_bigger(t_list *stack)
     t_list      *bigger;
 
     if (ft_lstsize(stack) == 0)
-        return (NULL);
+	return (NULL);
     tmp = stack;
     bigger = stack;
     while (tmp->next)
     {
-        if (!ft_compare_node(bigger, tmp->next))
-            bigger = tmp->next;
-        tmp = tmp->next;
+	if (!ft_compare_node(bigger, tmp->next))
+	    bigger = tmp->next;
+	tmp = tmp->next;
     }
     return (bigger);
 }
@@ -152,8 +152,10 @@ int     ft_offset(t_list *stack, t_list *node)
 t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
 {
     t_list      *tmp;
+    t_list	*lower;
 
     tmp = *stack_b;
+    lower = ft_to_lower(*stack_b);
     if (ft_lstsize(tmp) < 2)
 	return (NULL);
     while (tmp)
@@ -162,7 +164,9 @@ t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
 	    return (tmp);
 	tmp = tmp->next;
     }
-    return (ft_lstlast(*stack_b));
+    if (!lower->next)
+	return (*stack_b);
+    return (lower->next);
 }
 
 void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list *near)
@@ -178,40 +182,47 @@ void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list *near)
     offset_b = ft_offset(*stack_b, pos);
     size_a = ft_lstsize(*stack_a);
     size_b = ft_lstsize(*stack_b);
+    if (size_a - offset_a + 1 > offset_a - 1 && 
+	    size_b - offset_b + 1 > offset_b - 1)
     {
-	if (size_a - offset_a + 1 > offset_a - 1 && 
-		size_b - offset_b + 1 > offset_b - 1)
+	while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
 	{
-    		while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
-		{
-		    	ft_rotation(stack_a, 'r');
-			ft_rotation(stack_b, '2');
-		}
-	}
-	else if (size_a - offset_a + 1 <= offset_a - 1 && 
-		size_b - offset_b + 1 <= offset_b - 1)
-	{
-    		while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
-		{
-		    	ft_reverse_rotation(stack_a, 'r');
-			ft_reverse_rotation(stack_b, '2');
-		}
+	    ft_rotation(stack_a, 'r');
+	    ft_rotation(stack_b, '2');
 	}
     }
-    	if (size_a - offset_a + 1 > offset_a - 1) 
-    		while (ft_offset(*stack_a, near) != 1)
-			ft_rotation(stack_a, 'a');
-	else if (size_a - offset_a + 1 <= offset_a - 1)
-    		while (ft_offset(*stack_a, near) != 1)
- 			ft_reverse_rotation(stack_a, 'a');
-    	if (size_b - offset_b + 1 > offset_b - 1) 
-    		while (ft_offset(*stack_b, pos) != 1)
-			ft_rotation(stack_b, 'b');
-	else if (size_b - offset_b + 1 <= offset_b - 1)
-	    while (ft_offset(*stack_b, pos) != 1)
-		ft_reverse_rotation(stack_b, 'b');
-	if (ft_offset(*stack_a, near) == 1)
-	    ft_push(stack_a, stack_b, 'b');
+    else if (size_a - offset_a + 1 <= offset_a - 1 && 
+	    size_b - offset_b + 1 <= offset_b - 1)
+    {
+	while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
+	{
+	    ft_reverse_rotation(stack_a, 'r');
+	    ft_reverse_rotation(stack_b, '2');
+	}
+    }
+    if (size_a - offset_a + 1 > offset_a - 1) 
+	while (ft_offset(*stack_a, near) != 1)
+	    ft_rotation(stack_a, 'a');
+    else if (size_a - offset_a + 1 <= offset_a - 1)
+	while (ft_offset(*stack_a, near) != 1)
+	    ft_reverse_rotation(stack_a, 'a');
+    if (size_b - offset_b + 1 > offset_b - 1) 
+	while (ft_offset(*stack_b, pos) != 1)
+	    ft_rotation(stack_b, 'b');
+    else if (size_b - offset_b + 1 <= offset_b - 1)
+	while (ft_offset(*stack_b, pos) != 1)
+	    ft_reverse_rotation(stack_b, 'b');
+    if (ft_offset(*stack_a, near) == 1)
+	ft_push(stack_a, stack_b, 'b');
+    offset_b = ft_offset(*stack_b, ft_to_bigger(*stack_b));
+   /*
+    if (size_b - offset_b + 2 > offset_b - 1)
+	while (ft_offset(*stack_b, ft_to_bigger(*stack_b)) != 1)
+	    ft_rotation(stack_b, 'b');
+    if (size_b - offset_b + 2 <= offset_b - 1)
+	while (ft_offset(*stack_b, ft_to_bigger(*stack_b)) != 1)
+	    ft_reverse_rotation(stack_b, 'b');
+// */
 }
 
 int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail)

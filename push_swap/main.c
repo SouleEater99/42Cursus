@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 12:49:37 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:47:11 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target)
     offset = ft_offset(*stack_b, ft_get_pos_b(target, stack_b));
     top_b = offset - 1;
     bottom_b = ft_lstsize(*stack_b) - offset + 1;
-    if (bottom_a > top_a && bottom_b > top_b)
+    if (bottom_a >= top_a && bottom_b >= top_b)
     {
 	if (top_a == 0)
 	    return (top_b + 1);
@@ -80,7 +80,7 @@ int	ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target)
 	else
 	    return(bottom_a + 1);
     }
-    else if (bottom_a > top_a && bottom_b < top_b)
+    else if (bottom_a >= top_a && bottom_b <= top_b)
 	return(top_a + bottom_b + 1);
     else if (bottom_a <= top_a && bottom_b >= top_b)
 	return (bottom_a + top_b + 1);
@@ -159,15 +159,18 @@ int	main(int ac, char **av)
 
 
 
-	//	/*
 	ft_sort_stack(&stack_a, &stack_b);
+		/*
+//	ft_push(&stack_a, &stack_b, 'b');
+//	ft_push(&stack_a, &stack_b, 'b');
+//	ft_push(&stack_a, &stack_b, 'b');
+//	ft_push(&stack_a, &stack_b, 'b');
 	t_list    *tmp;
 	printf("---------------------------------\n");
 	tmp = stack_a;
 	while (tmp)
 	{
-	    if (*(int*)tmp->content == 2)
-		printf("number of move:%d \n", *(int*)ft_move_number(&stack_a, &stack_b, tmp));
+	    //printf("number of move:%d \n", ft_move_number(&stack_a, &stack_b, tmp));
 	    printf("stack_A :%d \n", *(int*)tmp->content);
 	    tmp = tmp->next;
 	}
