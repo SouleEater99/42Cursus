@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/18 18:13:37 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 09:37:40 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int     ft_offset(t_list *stack, t_list *node)
     return (i);
 }
 
-t_list  *ft_get_pos_b(t_list *stack_a, t_list **stack_b)
+t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
 {
     t_list      *tmp;
 
@@ -158,7 +158,7 @@ t_list  *ft_get_pos_b(t_list *stack_a, t_list **stack_b)
 	return (NULL);
     while (tmp)
     {
-	if (ft_compare_node(stack_a, tmp))
+	if (ft_compare_node(target, tmp))
 	    return (tmp);
 	tmp = tmp->next;
     }
