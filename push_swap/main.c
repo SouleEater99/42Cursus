@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 16:48:24 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:46:23 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,23 @@ t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
     return (save);
 }
 
- /*
+// /*
 void	ft_sort_stack_a(t_list **stack_a, t_list **stack_b)
 {
 
-    int	offset;
+    int		offset;
+    t_list	*pos;
 
-    offset = ft_offset(*stack_a, ft_get_pos_b(*stack_b, stack_a));
-	while (ft_lstsize(*stack_b) > 0)
-	{
-		
-	}
+    pos = ft_get_pos_b(*stack_b, stack_a);
+    offset = ft_offset(*stack_a,pos);
+    if (ft_lstsize(*stack_a) - offset + 1 > offset - 1)
+	while (ft_offset(*stack_a, pos) != 1)
+	    ft_rotation(stack_a, 'a');
+    else
+	while (ft_offset(*stack_a, pos) != 1)
+	    ft_reverse_rotation(stack_a, 'a');
+    ft_push(stack_b, stack_a, 'a');
+
 
 }
 // */
@@ -149,6 +155,8 @@ void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 	    while (ft_offset(*stack_b, ft_to_bigger(*stack_b)) != 1)
 		ft_reverse_rotation(stack_b, 'b');
     }
+    while (ft_lstsize(*stack_b) > 0)
+	ft_push(stack_b, stack_a, 'a');
 }
 
 
@@ -180,26 +188,26 @@ int	main(int ac, char **av)
 
 
 	ft_sort_stack(&stack_a, &stack_b);
-//		/*
-//	ft_push(&stack_a, &stack_b, 'b');
-//	ft_push(&stack_a, &stack_b, 'b');
-//	ft_push(&stack_a, &stack_b, 'b');
-//	ft_push(&stack_a, &stack_b, 'b');
+	/*
+	//	ft_push(&stack_a, &stack_b, 'b');
+	//	ft_push(&stack_a, &stack_b, 'b');
+	//	ft_push(&stack_a, &stack_b, 'b');
+	//	ft_push(&stack_a, &stack_b, 'b');
 	t_list    *tmp;
 	printf("---------------------------------\n");
 	tmp = stack_a;
 	while (tmp)
 	{
-	    //printf("number of move:%d \n", ft_move_number(&stack_a, &stack_b, tmp));
-	    printf("stack_A :%d \n", *(int*)tmp->content);
-	    tmp = tmp->next;
+	//printf("number of move:%d \n", ft_move_number(&stack_a, &stack_b, tmp));
+	printf("stack_A :%d \n", *(int*)tmp->content);
+	tmp = tmp->next;
 	}
 	tmp = stack_b;
 	printf("---------------------------------\n");
 	while (tmp)
 	{
-	    printf("stack_B :%d \n", *(int*)tmp->content);
-	    tmp = tmp->next;
+	printf("stack_B :%d \n", *(int*)tmp->content);
+	tmp = tmp->next;
 	}
 	//  */
 	ft_lstclear(&stack_a, free);

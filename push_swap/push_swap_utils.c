@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 16:07:34 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:45:34 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
 	    return (bigger);
 	bigger = bigger->next;
     }
+    bigger = ft_to_bigger(*stack_b);
     while (tmp && tmp != bigger)
     {
 	if (ft_compare_node(target, tmp))
