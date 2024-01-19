@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 13:48:47 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:07:34 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,20 +153,28 @@ t_list  *ft_get_pos_b(t_list *target, t_list **stack_b)
 {
     t_list      *tmp;
     t_list	*lower;
+    t_list	*bigger;
 
     tmp = *stack_b;
-    lower = ft_to_lower(*stack_b);
     if (ft_lstsize(tmp) < 2)
 	return (NULL);
-    while (tmp)
+    bigger = ft_to_bigger(*stack_b);
+    lower = ft_to_lower(*stack_b);
+    if (!ft_compare_node(target, lower) || ft_compare_node(target, bigger))
+	return (bigger);
+    while (bigger)
+    {
+	if (ft_compare_node(target, bigger))
+	    return (bigger);
+	bigger = bigger->next;
+    }
+    while (tmp && tmp != bigger)
     {
 	if (ft_compare_node(target, tmp))
 	    return (tmp);
 	tmp = tmp->next;
     }
-    if (!lower->next)
-	return (*stack_b);
-    return (lower->next);
+    return (NULL);
 }
 
 void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list *near)

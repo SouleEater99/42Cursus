@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 13:47:11 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 16:26:27 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
 void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
     t_list	*near;
+    int		offset;
 
     if (ft_lstsize(*stack_a) <= 3)
 	ft_sort_3(stack_a);
@@ -127,6 +128,13 @@ void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 	    near = ft_near_node(stack_a, stack_b);
 	    ft_sort_stack_b(stack_a, stack_b, near);	
 	}
+	offset = ft_offset(*stack_b, ft_to_bigger(*stack_b));
+	if (ft_lstsize(*stack_b) - offset + 1 >= offset - 1)
+	    while (ft_offset(*stack_b, ft_to_bigger(*stack_b)) != 1)
+		ft_rotation(stack_b, 'b');
+	else
+	    while (ft_offset(*stack_b, ft_to_bigger(*stack_b)) != 1)
+		ft_reverse_rotation(stack_b, 'b');
     }
 }
 
@@ -160,7 +168,7 @@ int	main(int ac, char **av)
 
 
 	ft_sort_stack(&stack_a, &stack_b);
-		/*
+//		/*
 //	ft_push(&stack_a, &stack_b, 'b');
 //	ft_push(&stack_a, &stack_b, 'b');
 //	ft_push(&stack_a, &stack_b, 'b');
