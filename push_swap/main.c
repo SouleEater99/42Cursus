@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 11:53:59 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:49:37 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,110 +24,110 @@ void	ft_free(char **tab)
 
 void	ft_sort_3(t_list **stack_a)
 {
-	t_list	*bigger;
-	int	offset;
+    t_list	*bigger;
+    int	offset;
 
-	bigger = ft_to_bigger(*stack_a);
-	offset = ft_offset(*stack_a, bigger);
-	if (offset != 3)
-	{
-	    if (ft_lstsize(*stack_a) - offset >= offset)
-		ft_rotation(stack_a, 'a');
-	    else
-		ft_reverse_rotation(stack_a, 'a');
-	}
-	if (ft_compare_node(*stack_a, (*stack_a)->next))
-	    ft_swap(stack_a, 'a');
+    bigger = ft_to_bigger(*stack_a);
+    offset = ft_offset(*stack_a, bigger);
+    if (offset != 3)
+    {
+	if (ft_lstsize(*stack_a) - offset >= offset)
+	    ft_rotation(stack_a, 'a');
+	else
+	    ft_reverse_rotation(stack_a, 'a');
+    }
+    if (ft_compare_node(*stack_a, (*stack_a)->next))
+	ft_swap(stack_a, 'a');
 }
 
 int	ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target)
 {
-	int	top_a;
-	int	top_b;
-	int	bottom_a;
-	int	bottom_b;
-	int	offset;
+    int	top_a;
+    int	top_b;
+    int	bottom_a;
+    int	bottom_b;
+    int	offset;
 
-	offset = ft_offset(*stack_a, target);
-	top_a = offset - 1;
-	bottom_a = ft_lstsize(*stack_a) - offset + 1;
-	offset = ft_offset(*stack_b, ft_get_pos_b(target, stack_b));
-	top_b = offset - 1;
-	bottom_b = ft_lstsize(*stack_b) - offset + 1;
-	if (bottom_a > top_a && bottom_b > top_b)
-	{
-	    	if (top_a == 0)
-		    return (top_b + 1);
-		else if (top_b == 0)
-		    return (top_a + 1);
-		else if (top_a < top_b)
-		    return ((top_b - top_a) + top_b + 1);
-		else if (top_a > top_b)
-		    return ((top_a - top_b) + top_a + 1);
-		else
-		    return(top_a + 1);
-	}
-	else if (bottom_a <= top_a && bottom_b <= top_b)
-	{
-	    	if (bottom_a == 0)
-		    return (bottom_b + 1);
-		else if (bottom_b == 0)
-		    return (bottom_a + 1);
-		else if (bottom_a < bottom_b)
-		    return ((bottom_b - bottom_a) + bottom_b + 1);
-		else if (bottom_a > bottom_b)
-		    return ((bottom_a - bottom_b) + bottom_a + 1);
-		else
-		    return(bottom_a + 1);
-	}
-	else if (bottom_a > top_a && bottom_b < top_b)
-		return(top_a + bottom_b + 1);
-	else if (bottom_a <= top_a && bottom_b >= top_b)
-	    return (bottom_a + top_b + 1);
-	return (0);
+    offset = ft_offset(*stack_a, target);
+    top_a = offset - 1;
+    bottom_a = ft_lstsize(*stack_a) - offset + 1;
+    offset = ft_offset(*stack_b, ft_get_pos_b(target, stack_b));
+    top_b = offset - 1;
+    bottom_b = ft_lstsize(*stack_b) - offset + 1;
+    if (bottom_a > top_a && bottom_b > top_b)
+    {
+	if (top_a == 0)
+	    return (top_b + 1);
+	else if (top_b == 0)
+	    return (top_a + 1);
+	else if (top_a < top_b)
+	    return ((top_b - top_a) + top_b + 1);
+	else if (top_a > top_b)
+	    return ((top_a - top_b) + top_a + 1);
+	else
+	    return(top_a + 1);
+    }
+    else if (bottom_a <= top_a && bottom_b <= top_b)
+    {
+	if (bottom_a == 0)
+	    return (bottom_b + 1);
+	else if (bottom_b == 0)
+	    return (bottom_a + 1);
+	else if (bottom_a < bottom_b)
+	    return ((bottom_b - bottom_a) + bottom_b + 1);
+	else if (bottom_a > bottom_b)
+	    return ((bottom_a - bottom_b) + bottom_a + 1);
+	else
+	    return(bottom_a + 1);
+    }
+    else if (bottom_a > top_a && bottom_b < top_b)
+	return(top_a + bottom_b + 1);
+    else if (bottom_a <= top_a && bottom_b >= top_b)
+	return (bottom_a + top_b + 1);
+    return (0);
 }
 
 
 t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*tmp;
-	t_list	*save;
-	int	lower;
+    t_list	*tmp;
+    t_list	*save;
+    int	lower;
 
-	tmp = *stack_a;
-	lower = ft_move_number(stack_a, stack_b, tmp);
-	save = tmp;
-	while (tmp)
+    tmp = *stack_a;
+    lower = ft_move_number(stack_a, stack_b, tmp);
+    save = tmp;
+    while (tmp)
+    {
+	if (lower > ft_move_number(stack_a, stack_b, tmp))
 	{
-	    if (lower > ft_move_number(stack_a, stack_b, tmp))
-	    {
-		save = tmp;
-		lower = ft_move_number(stack_a, stack_b, tmp);
-	    }
-	    tmp = tmp->next;
+	    save = tmp;
+	    lower = ft_move_number(stack_a, stack_b, tmp);
 	}
-	return (save);
+	tmp = tmp->next;
+    }
+    return (save);
 }
 
 // /*
 void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*near;
+    t_list	*near;
 
-	if (ft_lstsize(*stack_a) <= 3)
-	    ft_sort_3(stack_a);
-	else
+    if (ft_lstsize(*stack_a) <= 3)
+	ft_sort_3(stack_a);
+    else
+    {
+	while (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_b) < 2)
+	    ft_push(stack_a, stack_b, 'b');
+	if (!ft_compare_node(*stack_b, (*stack_b)->next))
+	    ft_swap(stack_b, 'b');
+	while (ft_lstsize(*stack_a) > 3)
 	{
-		while (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_b) < 2)
-		    ft_push(stack_a, stack_b, 'b');
-		if (!ft_compare_node(*stack_b, (*stack_b)->next))
-			ft_swap(stack_b, 'b');
-		while (ft_lstsize(*stack_a) > 3)
-		{
-		    near = ft_near_node(stack_a, stack_b);
-		    ft_sort_stack_b(stack_a, stack_b, near);	
-		}
+	    near = ft_near_node(stack_a, stack_b);
+	    ft_sort_stack_b(stack_a, stack_b, near);	
 	}
+    }
 }
 
 // */
@@ -159,22 +159,24 @@ int	main(int ac, char **av)
 
 
 
-//	/*
+	//	/*
 	ft_sort_stack(&stack_a, &stack_b);
 	t_list    *tmp;
 	printf("---------------------------------\n");
 	tmp = stack_a;
 	while (tmp)
 	{
-	printf("stack_A :%d \n", *(int*)tmp->content);
-	tmp = tmp->next;
+	    if (*(int*)tmp->content == 2)
+		printf("number of move:%d \n", *(int*)ft_move_number(&stack_a, &stack_b, tmp));
+	    printf("stack_A :%d \n", *(int*)tmp->content);
+	    tmp = tmp->next;
 	}
 	tmp = stack_b;
 	printf("---------------------------------\n");
 	while (tmp)
 	{
-	printf("stack_B :%d \n", *(int*)tmp->content);
-	tmp = tmp->next;
+	    printf("stack_B :%d \n", *(int*)tmp->content);
+	    tmp = tmp->next;
 	}
 	//  */
 	ft_lstclear(&stack_a, free);
