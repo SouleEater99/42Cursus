@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:19 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/19 17:46:23 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:55:08 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ int	main(int ac, char **av)
 
 
 	ft_sort_stack(&stack_a, &stack_b);
-	/*
+//	/*
 	//	ft_push(&stack_a, &stack_b, 'b');
 	//	ft_push(&stack_a, &stack_b, 'b');
 	//	ft_push(&stack_a, &stack_b, 'b');
