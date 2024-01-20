@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:42:33 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/20 14:43:36 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/20 19:07:18 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,25 @@ int	ft_offset(t_list *stack, t_list *node)
 			return (0);
 	}
 	return (i);
+}
+
+t_list	*ft_near_node(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*tmp;
+	t_list	*save;
+	int		lower;
+
+	tmp = *stack_a;
+	lower = ft_move_number(stack_a, stack_b, tmp);
+	save = tmp;
+	while (tmp)
+	{
+		if (lower > ft_move_number(stack_a, stack_b, tmp))
+		{
+			save = tmp;
+			lower = ft_move_number(stack_a, stack_b, tmp);
+		}
+		tmp = tmp->next;
+	}
+	return (save);
 }

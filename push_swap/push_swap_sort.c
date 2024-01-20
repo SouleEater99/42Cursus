@@ -25,14 +25,13 @@ void	ft_sort_stack_b(t_list **stack_a, t_list **stack_b, t_list *near)
 	set_b = ft_offset(*stack_b, pos);
 	size_a = ft_lstsize(*stack_a);
 	size_b = ft_lstsize(*stack_b);
-	if (size_a - set_a + 1 > set_a - 1 &&size_b - set_b + 1 > set_b - 1)
+	if (size_a - set_a + 1 > set_a - 1 && size_b - set_b + 1 > set_b - 1)
 	{
 		ft_sort_b_equal_top(stack_a, stack_b, near);
 	}
 	else if (size_a - set_a + 1 <= set_a - 1 && size_b - set_b + 1 <= set_b - 1)
 	{
 		ft_sort_b_equal_bottom(stack_a, stack_b, near);
-	
 	}
 	ft_sort_b_remain(stack_a, stack_b, near);
 }

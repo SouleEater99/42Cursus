@@ -26,6 +26,8 @@ void    ft_sort_stack(t_list **stack_a, t_list **stack_b);
 void    ft_sort_stack_a(t_list **stack_a, t_list **stack_b);
 t_list  *ft_near_node(t_list **stack_a, t_list **stack_b);
 int     ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target);
+int     ft_move_number_top(t_list **stack_a, t_list **stack_b, t_list *target);
+int     ft_move_number_bottom(t_list **stack_a, t_list **stack_b, t_list *target);
 void    ft_sort_3(t_list **stack_a);
 void    ft_free(char **tab);
 int     ft_fill_stack_split(t_list **stack_a, char **av);
