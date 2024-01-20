@@ -10,13 +10,14 @@ SRC = push_swap.c \
       push_swap_compare.c \
       push_swap_sort.c 
 
+OBJ = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a
 
 all : $(NAME)
 
-$(NAME) : $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC) $(LIBFT) -o $(NAME)
+$(NAME) : $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(LIBFT) :
 	make -C ./libft all
