@@ -29,5 +29,9 @@ int     ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target);
 void    ft_sort_3(t_list **stack_a);
 void    ft_free(char **tab);
 int     ft_fill_stack_split(t_list **stack_a, char **av);
+void    ft_sort_b_equal_top(t_list **stack_a, t_list **stack_b, t_list *near);
+void    ft_sort_b_equal_bottom(t_list **stack_a, t_list **stack_b, t_list *near);
+void    ft_sort_b_remain(t_list **stack_a, t_list **stack_b, t_list *near);
+
 
 #endif
