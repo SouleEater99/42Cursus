@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   push_swap__movement.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:48:31 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/18 17:57:10 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:33:13 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ void	ft_swap(t_list **stack, char c)
 		(*stack)->next = tmp->next;
 		tmp->next = *stack;
 		*stack = tmp;
+		if (c == 'a')
+			write(1, "sa\n", 3);
+		else if (c == 'b')
+			write(1, "sb\n", 3);
+		else if (c == '2')
+			write(1, "ss\n", 3);
 	}
-	if (c == 'a')
-		write(1, "sa\n", 3);
-	else if (c == 'b')
-		write(1, "sb\n", 3);
-	else if (c == '2')
-		write(1, "ss\n", 3);
 }
 
 void	ft_push(t_list **stack_1, t_list **stack_2, char c)
@@ -43,28 +43,31 @@ void	ft_push(t_list **stack_1, t_list **stack_2, char c)
 		tmp2->next = *stack_2;
 		*stack_2 = tmp2;
 		*stack_1 = tmp;
+		if (c == 'a')
+			write(1, "pa\n", 3);
+		else if (c == 'b')
+			write(1, "pb\n", 3);
 	}
-	if (c == 'a')
-		write(1, "pa\n", 3);
-	else if (c == 'b')
-		write(1, "pb\n", 3);
 }
 
 void	ft_rotation(t_list **stack, char c)
 {
 	t_list	*tmp;
 
-	tmp = ft_lstlast(*stack);
-	tmp->next = *stack;
-	tmp = (*stack)->next;
-	(*stack)->next = NULL;
-	*stack = tmp;
-	if (c == 'a')
-		write(1, "ra\n", 3);
-	else if (c == 'b')
-		write(1, "rb\n", 3);
-	else if (c == '2')
-		write(1, "rr\n", 3);
+	if ((*stack)->next)
+	{
+		tmp = ft_lstlast(*stack);
+		tmp->next = *stack;
+		tmp = (*stack)->next;
+		(*stack)->next = NULL;
+		*stack = tmp;
+		if (c == 'a')
+			write(1, "ra\n", 3);
+		else if (c == 'b')
+			write(1, "rb\n", 3);
+		else if (c == '2')
+			write(1, "rr\n", 3);
+	}
 }
 
 void	ft_reverse_rotation(t_list **stack, char c)
