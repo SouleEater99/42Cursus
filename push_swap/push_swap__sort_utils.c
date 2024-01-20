@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 18:52:22 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/20 18:52:54 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/20 19:14:31 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,9 @@
 
 void	ft_sort_b_equal_top(t_list **stack_a, t_list **stack_b, t_list *near)
 {
-	int		offset_a;
-	int		offset_b;
-	int		size_a;
-	int		size_b;
 	t_list	*pos;
 
 	pos = ft_get_pos_b(near, stack_b);
-	offset_a = ft_offset(*stack_a, near);
-	offset_b = ft_offset(*stack_b, pos);
-	size_a = ft_lstsize(*stack_a);
-	size_b = ft_lstsize(*stack_b);
 	while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
 	{
 		ft_rotation(stack_a, 'r');
@@ -34,17 +26,9 @@ void	ft_sort_b_equal_top(t_list **stack_a, t_list **stack_b, t_list *near)
 
 void	ft_sort_b_equal_bottom(t_list **stack_a, t_list **stack_b, t_list *near)
 {
-	int		offset_a;
-	int		offset_b;
-	int		size_a;
-	int		size_b;
 	t_list	*pos;
 
 	pos = ft_get_pos_b(near, stack_b);
-	offset_a = ft_offset(*stack_a, near);
-	offset_b = ft_offset(*stack_b, pos);
-	size_a = ft_lstsize(*stack_a);
-	size_b = ft_lstsize(*stack_b);
 	while (ft_offset(*stack_a, near) != 1 && ft_offset(*stack_b, pos) != 1)
 	{
 		ft_reverse_rotation(stack_a, 'r');
