@@ -23,6 +23,10 @@ int     ft_check_sort(t_list **stack_a, t_list **stack_b, t_list *tail);
 t_list  *ft_get_pos_b(t_list *target, t_list **stack_b);
 t_list  *ft_get_pos_a(t_list *target, t_list **stack_a);
 void    ft_sort_stack_b(t_list  **stack_a, t_list **stack_b, t_list * near);
-
-
+void    ft_sort_stack(t_list **stack_a, t_list **stack_b);
+void    ft_sort_stack_a(t_list **stack_a, t_list **stack_b);
+t_list  *ft_near_node(t_list **stack_a, t_list **stack_b);
+int     ft_move_number(t_list **stack_a, t_list **stack_b, t_list *target);
+void    ft_sort_3(t_list **stack_a);
+void    ft_free(char **tab);
 #endif
