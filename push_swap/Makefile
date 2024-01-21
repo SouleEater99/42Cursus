@@ -14,7 +14,13 @@ SRC = push_swap.c \
 
 SRC_B = checker.c \
 	get_next_line.c \
-	get_next_line_utils.c
+	get_next_line_utils.c \
+	push_swap__movement.c \
+      	push_swap_utils.c \
+      	push_swap__sort_utils.c \
+      	push_swap_check_args.c \
+      	push_swap_compare.c \
+      	push_swap_sort.c 
 
 OBJ = $(SRC:.c=.o)
 
@@ -30,15 +36,16 @@ $(NAME) : $(OBJ) $(LIBFT)
 $(LIBFT) :
 	make -C ./libft all
 	make -C ./libft bonus
+bonus: $(CHECKER)
 
-bonus : $(obj) $(OBJ_B) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ_B) $(OBJ) $(LIBFT) -o $(CHECKER)
+$(CHECKER) : $(OBJ_B) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ_B) $(LIBFT) -o $(CHECKER)
 
 clean :
-	rm -rf $(OBJ)
+	rm -rf $(OBJ) $(OBJ_B)
 	make -C ./libft fclean
 
 fclean : clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re : fclean all

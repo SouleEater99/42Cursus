@@ -6,14 +6,14 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 09:46:46 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/21 10:19:38 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/21 16:40:09 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "get_next_line/get_next_line.h"
+# include "get_next_line.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
