@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:48:31 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/20 17:33:13 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/21 13:17:13 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_rotation(t_list **stack, char c)
 {
 	t_list	*tmp;
 
-	if ((*stack)->next)
+	if (*stack && (*stack)->next)
 	{
 		tmp = ft_lstlast(*stack);
 		tmp->next = *stack;
@@ -75,7 +75,7 @@ void	ft_reverse_rotation(t_list **stack, char c)
 	t_list	*last;
 	t_list	*before_last;
 
-	if ((*stack)->next)
+	if (*stack && (*stack)->next)
 	{
 		last = ft_lstlast(*stack);
 		before_last = *stack;

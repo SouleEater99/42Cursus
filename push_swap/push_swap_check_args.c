@@ -85,27 +85,27 @@ t_list	*ft_fill_stack_a(t_list *stack_a, char **av, char c)
 	return (stack_a);
 }
 
-void    ft_free(char **tab)
+void	ft_free(char **tab)
 {
-        int     i;
+	int	i;
 
-        i = 0;
-        while (tab[i])
-                free(tab[i++]);
-        free(tab);
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }
 
-int     ft_fill_stack_split(t_list **stack_a, char **av)
+int	ft_fill_stack_split(t_list **stack_a, char **av)
 {
-        char    **tab;
-        t_list  *tmp;
+	char	**tab;
+	t_list	*tmp;
 
-        tab = NULL;
-        tmp = *stack_a;
-        tab = ft_split(av[1], ' ');
-        if (!tab || !tab[0] || ft_check_paramters(tab, 's') == -1)
-                return (write(2, "Error\n", 6), ft_free(tab), 0);
-        *stack_a = ft_fill_stack_a(tmp, tab, 's');
-        ft_free(tab);
-        return (1);
+	tab = NULL;
+	tmp = *stack_a;
+	tab = ft_split(av[1], ' ');
+	if (!tab || !tab[0] || ft_check_paramters(tab, 's') == -1)
+		return (write(2, "Error\n", 6), ft_free(tab), 0);
+	*stack_a = ft_fill_stack_a(tmp, tab, 's');
+	ft_free(tab);
+	return (1);
 }
