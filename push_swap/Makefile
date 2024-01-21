@@ -1,6 +1,8 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
+
+CHECKER = checker
 
 SRC = push_swap.c \
       push_swap__movement.c \
@@ -10,7 +12,13 @@ SRC = push_swap.c \
       push_swap_compare.c \
       push_swap_sort.c 
 
+SRC_B = checker.c \
+	get_next_line.c \
+	get_next_line_utils.c
+
 OBJ = $(SRC:.c=.o)
+
+OBJ_B = $(SRC_B:.c=.o)
 
 LIBFT = libft/libft.a
 
@@ -22,6 +30,9 @@ $(NAME) : $(OBJ) $(LIBFT)
 $(LIBFT) :
 	make -C ./libft all
 	make -C ./libft bonus
+
+bonus : $(obj) $(OBJ_B) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ_B) $(OBJ) $(LIBFT) -o $(CHECKER)
 
 clean :
 	rm -rf $(OBJ)
