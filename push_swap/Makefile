@@ -24,6 +24,7 @@ $(LIBFT) :
 	make -C ./libft bonus
 
 clean :
+	rm -rf $(OBJ)
 	make -C ./libft fclean
 
 fclean : clean
