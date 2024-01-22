@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 09:46:46 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/22 14:25:35 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:46:54 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	ft_sort_b_equal_top(t_list **stack_a, t_list **stack_b, t_list *near);
 void	ft_sort_b_equal_bottom(t_list **stack_a, t_list **stack_b,
 			t_list *near);
 void	ft_sort_b_remain(t_list **stack_a, t_list **stack_b, t_list *near);
+int		ft_check_sort(t_list *stack_a, t_list *stack_b);
 
 #endif

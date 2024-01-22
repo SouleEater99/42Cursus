@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 10:24:29 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/21 16:51:51 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:10:03 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,6 @@ int	ft_checker_input(t_list **stack_a, t_list **stack_b, char *line)
 	return (free(line), 1);
 }
 
-int	ft_check_sort(t_list *stack_a, t_list *stack_b)
-{
-	if (ft_lstsize(stack_b) > 0)
-		return (write(1, "KO\n", 3), 0);
-	while (stack_a->next)
-	{
-		if (ft_compare_node(stack_a, stack_a->next))
-			return (write(1, "KO\n", 3), 0);
-		stack_a = stack_a->next;
-	}
-	return (write(1, "OK\n", 3), 1);
-}
-
 int	ft_read_input(t_list **stack_a, t_list **stack_b)
 {
 	char	*line;
@@ -88,6 +75,19 @@ int	ft_read_input(t_list **stack_a, t_list **stack_b)
 		line = get_next_line(0);
 	}
 	return (1);
+}
+
+int	ft_check_sort_2(t_list *stack_a, t_list *stack_b)
+{
+	if (ft_lstsize(stack_b) > 0)
+		return (write(1, "KO\n", 3), 0);
+	while (stack_a->next)
+	{
+		if (ft_compare_node(stack_a, stack_a->next))
+			return (write(1, "KO\n", 3), 0);
+		stack_a = stack_a->next;
+	}
+	return (write(1, "OK\n", 3), 1);
 }
 
 int	main(int ac, char **av)
@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 		}
 		if (ft_read_input(&stack_a, &stack_b) == 0)
 			return (ft_lstclear(&stack_a, free), 0);
-		ft_check_sort(stack_a, stack_b);
+		ft_check_sort_2(stack_a, stack_b);
 		ft_lstclear(&stack_a, free);
 		ft_lstclear(&stack_b, free);
 	}

@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 18:52:22 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/20 19:14:31 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:21:32 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ void	ft_sort_b_remain(t_list **stack_a, t_list **stack_b, t_list *near)
 			ft_reverse_rotation(stack_b, 'b');
 	if (ft_offset(*stack_a, near) == 1)
 		ft_push(stack_a, stack_b, 'b');
+}
+
+int	ft_check_sort(t_list *stack_a, t_list *stack_b)
+{
+	if (ft_lstsize(stack_b) > 0)
+		return (0);
+	while (stack_a->next)
+	{
+		if (ft_compare_node(stack_a, stack_a->next))
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
 }
