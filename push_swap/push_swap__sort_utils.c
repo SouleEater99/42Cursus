@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 18:52:22 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/22 16:21:32 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:57:33 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,33 @@ int	ft_check_sort(t_list *stack_a, t_list *stack_b)
 		stack_a = stack_a->next;
 	}
 	return (1);
+}
+
+char	*ft_strjoin_2(char *str1, char *str2)
+{
+	int		i;
+	int		len_1;
+	char	*new;
+
+	if (!str2)
+		return (NULL);
+	if (!str1)
+		len_1 = 0;
+	else
+		len_1 = ft_strlen(str1) + 1;
+	i = -1;
+	new = malloc(len_1 + ft_strlen(str2) + 1);
+	if (!new)
+		return (NULL);
+	while (str1 && str1[++i])
+		new[i] = str1[i];
+	if (str1)
+		new[i] = ' ';
+	i = -1;
+	while (str2[++i])
+		new[len_1 + i] = str2[i];
+	new[len_1 + i] = '\0';
+	if (str1)
+		free(str1);
+	return (new);
 }

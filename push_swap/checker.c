@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 10:24:29 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/24 15:52:09 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:55:42 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,23 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	char	*str;
+	char	**tab;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ac >= 2)
 	{
-		if (ac == 2)
-		{
-			if (!ft_fill_stack_split(&stack_a, av))
-				return (0);
-		}
-		else
-		{
-			if (ft_check_paramters(av, 'a') == -1)
-				return (write(2, "Error\n", 6), 0);
-			stack_a = ft_fill_stack_a(stack_a, av, 'a');
-		}
+		str = ft_merge_arg(av);
+		tab = ft_split(str, ' ');
+		if (!tab)
+			return (0);
+		if (str)
+			free(str);
+		if (ft_check_paramters(tab, 'a') == -1)
+			return (write(2, "Error\n", 6), 0);
+		stack_a = ft_fill_stack_a(stack_a, tab, 'a');
+		ft_free(tab);
 		if (ft_read_input(&stack_a, &stack_b) == 0)
 			return (ft_lstclear(&stack_a, free), 0);
 		ft_check_sort_2(stack_a, stack_b);

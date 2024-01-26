@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:40:58 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/22 16:26:50 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:57:15 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,14 @@ void	ft_free(char **tab)
 	free(tab);
 }
 
-int	ft_fill_stack_split(t_list **stack_a, char **av)
+char	*ft_merge_arg(char **av)
 {
-	char	**tab;
-	t_list	*tmp;
+	int		i;
+	char	*tmp;
 
-	tab = NULL;
-	tmp = *stack_a;
-	tab = ft_split(av[1], ' ');
-	if (!tab || !tab[0] || ft_check_paramters(tab, 's') == -1)
-		return (write(2, "Error\n", 6), ft_free(tab), 0);
-	*stack_a = ft_fill_stack_a(tmp, tab, 's');
-	ft_free(tab);
-	return (1);
+	tmp = NULL;
+	i = 0;
+	while (av[i])
+		tmp = ft_strjoin_2(tmp, av[i++]);
+	return (tmp);
 }
