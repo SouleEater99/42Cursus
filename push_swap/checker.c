@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 10:24:29 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/22 16:10:03 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:52:09 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_checker_input_child(t_list **stack_a, t_list **stack_b, char *line)
 	else if (ft_strncmp(line, "rrr\n", size) == 0)
 	{
 		ft_reverse_rotation(stack_a, 'd');
-		ft_reverse_rotation(stack_a, 'd');
+		ft_reverse_rotation(stack_b, 'd');
 		return (1);
 	}
 	return (0);
