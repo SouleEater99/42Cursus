@@ -6,13 +6,13 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 12:05:07 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/10 19:12:42 by ael-maim         ###   ########.fr       */
+/*   Updated: 2023/11/11 15:39:45 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void	*content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 

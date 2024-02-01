@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 06:51:54 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/20 19:07:33 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:17:18 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ int	ft_move_number_top(t_list **stack_a, t_list **stack_b, t_list *target)
 		return (top_b + 1);
 	else if (top_b == 0)
 		return (top_a + 1);
-	else if (top_a < top_b)
-		return ((top_b - top_a) + top_b + 1);
+	else if (top_a <= top_b)
+		return (top_b  + 1);
 	else if (top_a > top_b)
-		return ((top_a - top_b) + top_a + 1);
+		return (top_a + 1);
 	return (top_a + 1);
 }
 
@@ -103,10 +103,10 @@ int	ft_move_number_bottom(t_list **stack_a, t_list **stack_b, t_list *target)
 		return (bottom_b + 1);
 	else if (bottom_b == 0)
 		return (bottom_a + 1);
-	else if (bottom_a < bottom_b)
-		return ((bottom_b - bottom_a) + bottom_b + 1);
+	else if (bottom_a <= bottom_b)
+		return (bottom_b + 1);
 	else if (bottom_a > bottom_b)
-		return ((bottom_a - bottom_b) + bottom_a + 1);
+		return (bottom_a + 1);
 	return (bottom_a + 1);
 }
 

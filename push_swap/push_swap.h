@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 09:46:46 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/26 10:56:20 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:19:01 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+typedef	struct info {
+	int	offset;
+	int	top;
+	int	bottom;
+	int	size;
+} info;
 
 int		ft_check_is_number(char *str);
 int		ft_check_paramters(char **av, char c);
