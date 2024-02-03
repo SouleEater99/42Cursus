@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_sort_b_equal_top(t_list **stack_a, t_list **stack_b, t_info *info)
 {

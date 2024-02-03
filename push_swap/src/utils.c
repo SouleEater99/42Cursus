@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 t_list	*ft_get_pos_a(t_list *target, t_list **stack_a)
 {

@@ -6,11 +6,11 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 10:24:29 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/26 10:55:42 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/02/03 11:05:18 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	ft_checker_input_child(t_list **stack_a, t_list **stack_b, char *line)
 {

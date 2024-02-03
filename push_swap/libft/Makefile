@@ -39,31 +39,13 @@ SRC = ft_memset.c \
       ft_memmove.c \
       ft_strlcpy.c
 
-SRC_B = ft_lstadd_back_bonus.c \
-        ft_lstadd_front_bonus.c \
-        ft_lstclear_bonus.c \
-        ft_lstdelone_bonus.c \
-        ft_lstiter_bonus.c \
-        ft_lstlast_bonus.c \
-        ft_lstmap_bonus.c \
-        ft_lstnew_bonus.c \
-        ft_lstsize_bonus.c
-
 OBJ = $(SRC:.c=.o)
 
-OBJ_B = $(SRC_B:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-
-
-$(OBJ_B) : $(SRC_B)
-	$(CC) $(CFLAGS) -c $(SRC_B)
-	$(AR) $(NAME) $(OBJ_B)
-
-bonus: $(OBJ_B)
 
 clean:
 	$(RM) $(OBJ) $(OBJ_B)
