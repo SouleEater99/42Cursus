@@ -55,9 +55,9 @@ int	ft_checker_input(t_list **stack_a, t_list **stack_b, char *line)
 		ft_swap(stack_b, 'd');
 	}
 	else if (ft_strncmp(line, "pa\n", size) == 0)
-		ft_push(stack_b, stack_a, 'd');
+		ft_push_checker(stack_b, stack_a, 'd');
 	else if (ft_strncmp(line, "pb\n", size) == 0)
-		ft_push(stack_a, stack_b, 'd');
+		ft_push_checker(stack_a, stack_b, 'd');
 	else if (ft_checker_input_child(stack_a, stack_b, line) == 0)
 		return (write(2, "Error\n", 6), free(line), 0);
 	return (free(line), 1);
@@ -103,18 +103,18 @@ int	main(int ac, char **av)
 	{
 		str = ft_merge_arg(av);
 		tab = ft_split(str, ' ');
-		if (!tab)
-			return (0);
 		if (str)
 			free(str);
-		if (ft_check_paramters(tab, 'a') == -1)
-			return (write(2, "Error\n", 6), 0);
-		stack_a = ft_fill_stack_a(stack_a, tab, 'a');
-		ft_free(tab);
+		if (!tab)
+			return (0);
+		if (ft_check_paramters(ac, av, tab) == -1)
+			return (ft_free_lst(tab), write(2, "Error\n", 6), 0);
+		stack_a = ft_fill_stack_a(stack_a, tab);
+		ft_free_lst(tab);
 		if (ft_read_input(&stack_a, &stack_b) == 0)
-			return (ft_lstclear(&stack_a, free), 0);
+			return (ft_lstclear(&stack_a, free), ft_lstclear(&stack_b, free),
+				0);
 		ft_check_sort_2(stack_a, stack_b);
-		ft_lstclear(&stack_a, free);
-		ft_lstclear(&stack_b, free);
+		return (ft_lstclear(&stack_a, free), ft_lstclear(&stack_b, free), 0);
 	}
 }

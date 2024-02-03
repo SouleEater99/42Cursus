@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap__movement.c                              :+:      :+:    :+:   */
+/*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 06:48:31 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/01/21 13:17:13 by ael-maim         ###   ########.fr       */
+/*   Created: 2024/02/02 11:37:02 by ael-maim          #+#    #+#             */
+/*   Updated: 2024/02/03 10:27:37 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_swap(t_list **stack, char c)
 	}
 }
 
-void	ft_push(t_list **stack_1, t_list **stack_2, char c)
+void	ft_push(t_list **stack_1, t_list **stack_2, t_info *info, char c)
 {
 	t_list	*tmp;
 	t_list	*tmp2;
@@ -44,9 +44,17 @@ void	ft_push(t_list **stack_1, t_list **stack_2, char c)
 		*stack_2 = tmp2;
 		*stack_1 = tmp;
 		if (c == 'a')
+		{
 			write(1, "pa\n", 3);
+			info->len_a++;
+			info->len_b--;
+		}
 		else if (c == 'b')
+		{
 			write(1, "pb\n", 3);
+			info->len_a--;
+			info->len_b++;
+		}
 	}
 }
 
@@ -90,5 +98,24 @@ void	ft_reverse_rotation(t_list **stack, char c)
 			write(1, "rrb\n", 4);
 		else if (c == '2')
 			write(1, "rrr\n", 4);
+	}
+}
+
+void	ft_push_checker(t_list **stack_1, t_list **stack_2, char c)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	if (*stack_1)
+	{
+		tmp = (*stack_1)->next;
+		tmp2 = *stack_1;
+		tmp2->next = *stack_2;
+		*stack_2 = tmp2;
+		*stack_1 = tmp;
+		if (c == 'a')
+			write(1, "pa\n", 3);
+		else if (c == 'b')
+			write(1, "pb\n", 3);
 	}
 }
