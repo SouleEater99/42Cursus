@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/06 13:36:48 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 14:27:32 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/24 08:32:01 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <time.h>
-# include <unistd.h>
-
-typedef struct s_pipe
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char	*path;
-	char	**arg;
-	int		pid;
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-}			s_pipe;
-
-#endif
+	i = 0;
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
+}

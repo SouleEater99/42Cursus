@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/06 13:36:48 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 15:52:48 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/24 08:29:38 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <time.h>
-# include <unistd.h>
-
-typedef struct s_pipe
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*path;
-	char	**arg;
-	int		pid;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-}			s_pipe;
-
-#endif
+	if (!dest && !src)
+		return (dest);
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	i = 0;
+	if (d > s)
+		while (n-- > 0)
+			d[n] = s[n];
+	else
+		while (i++ < n && n != 0)
+			*d++ = *s++;
+	return (dest);
+}

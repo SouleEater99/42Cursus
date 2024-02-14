@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/06 13:36:48 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 15:47:39 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/19 09:35:52 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <time.h>
-# include <unistd.h>
-
-typedef struct s_pipe
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	char	*path;
-	char	**arg;
-	int		pid;
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-}			s_pipe;
-
-#endif
+	if (n == 0)
+		return (0);
+	i = 0;
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (*s1 - *s2);
+}

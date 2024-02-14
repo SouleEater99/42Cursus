@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/06 13:36:48 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 16:00:23 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/24 08:06:45 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <time.h>
-# include <unistd.h>
-
-typedef struct s_pipe
+void	ft_putnbr_fd(int n, int fd)
 {
-	char	*path;
-	char	**arg;
-	int		pid;
+	long long	nbr;
 
-}			s_pipe;
-
-#endif
+	nbr = n;
+	if (fd >= 0)
+	{
+		if (nbr < 0)
+		{
+			ft_putchar_fd('-', fd);
+			nbr = -nbr;
+		}
+		if (nbr > 9)
+		{
+			ft_putnbr_fd(nbr / 10, fd);
+			ft_putnbr_fd(nbr % 10, fd);
+		}
+		else if (nbr <= 9)
+			ft_putchar_fd(nbr + '0', fd);
+	}
+}

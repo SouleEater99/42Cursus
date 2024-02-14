@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/06 13:36:48 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 16:13:37 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/19 09:22:05 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <errno.h>
-# include <fcntl.h>
-# include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <time.h>
-# include <unistd.h>
-
-typedef struct s_pipe
+char	*ft_strrchr(const char *str, int c)
 {
-	char	*path;
-	char	**arg;
-	int		pid;
+	int				i;
+	unsigned char	uc;
 
-}			s_pipe;
-
-#endif
+	uc = c;
+	i = ft_strlen(str);
+	if (uc == str[i])
+		return ((char *)&str[i]);
+	while (--i >= 0)
+		if (str[i] == uc)
+			return ((char *)&str[i]);
+	return (NULL);
+}

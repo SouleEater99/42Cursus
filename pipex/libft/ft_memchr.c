@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 16:45:31 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/02/01 14:50:31 by ael-maim         ###   ########.fr       */
+/*   Created: 2023/11/11 15:44:23 by ael-maim          #+#    #+#             */
+/*   Updated: 2023/11/19 09:28:33 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main()
+void	*ft_memchr(const void *ptr, int c, size_t n)
 {
-   	int	id = fork();
-	int	n;
+	unsigned char	*uc;
+	unsigned char	ch;
+	size_t			i;
 
-	if (id == 0)
-	    n = 1;
-	else
+	ch = c;
+	i = 0;
+	uc = (unsigned char *)ptr;
+	while (i < n)
 	{
-	    n = 6;
-	    wait();
+		if (uc[i] == ch)
+			return (&uc[i]);
+		i++;
 	}
-	int i = n;
-	while (i < n + 5)
-	{
-		printf("%d", i++);
-	}
-	    printf("\n");
+	return (NULL);
 }
