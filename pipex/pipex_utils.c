@@ -23,11 +23,29 @@ void	ft_free_members(s_pipe *set)
 	}
 }
 
+// void	ft_print_error(char **envp, char *cmd)
+// {
+// 	char	**tab;
+// 	int		i;
+// 	char 	*error;
+	
+// 	i = 0;
+// 	while (envp[i] && (ft_strnstr(envp[i], "SHELL=", 7) == NULL))
+// 		i++;
+// 	tab = ft_split(&(envp[i]) + 7, '/');
+// 	i = 0;
+// 	while (tab[i])
+// 		i++;
+// 	write(2, tab[i -1], sizeof(tab[i - 1]));
+// 	write(2, ": command not found: ", 22);
+// 	while )////// we stop here i eed to rite the same error in 127;
+// }
+
 size_t	ft_strlen_delimiter(const char *str, char c)
 {
 	size_t	i;
 
-	i = -1;
+	i = 0;
 	while (str[i] && str[i] != c)
 		i++;
 	return (i);
@@ -45,12 +63,12 @@ char	*ft_strjoin_path(char const *s1, char const *s2, char c)
 	d = (char *)malloc(s1_len + ft_strlen_delimiter(s2, ' ') + 1);
 	if (d == NULL)
 		return (NULL);
-	i = -2;
+	i = -1;
 	while (s1[++i])
 		d[i] = s1[i];
 	d[i] = c;
-	i = -1;
-	while (s1[i] && s2[i] != ' ')
+	i = 0;
+	while (s2[i] && s2[i] != ' ')
 	{
 		d[s1_len + i] = s2[i];
 		i++;
@@ -63,13 +81,13 @@ int	ft_check_path(char *cmd)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (cmd[i] == ' ')
 		i++;
 	while (cmd[i] && cmd[i] != ' ')
 		if (cmd[i++] == '/')
 			return (0);
-	return (-1);
+	return (1);
 }
 
 char	*ft_get_path(char **envp, char *cmd)
@@ -79,11 +97,11 @@ char	*ft_get_path(char **envp, char *cmd)
 	char	**tab;
 
 	i = 0;
-	if (ft_check_path(cmd) == 1)
-		return (NULL);
+	if (ft_check_path(cmd) == 0)
+		return (ft_strdup(cmd));
 	while (envp[i] && (ft_strnstr(envp[i], "PATH=", 6) == NULL))
 		i++;
-	tab = ft_split(envp[i], ':');
+	tab = ft_split(envp[i]  , ':');
 	i = 0;
 	while (tab[i])
 	{
