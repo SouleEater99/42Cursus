@@ -6,7 +6,7 @@
 /*   By: ael-maim <ael-maim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:16 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/20 14:32:35 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/20 13:37:44 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void    ft_exit(s_pipe *ps)
         free(ps);
     }
     exit(1);
-}
-
-void    ft_dup_error(s_pipe *ps, int fd1, int fd2)
-{
-        perror("dup error");
-        close(fd1);
-        if (fd2 != )
-            close (fd2);
-        ft_exit(ps);
 }
 
 void    ft_first_cmd(s_pipe *ps, int *pip, char **envp)
@@ -145,6 +136,7 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
             ft_exit(ps);
         if (ps->pid == 0)
         {
+           
             ft_assign(av[i], envp, ps);
             if (i == 2)
                 ft_first_cmd(ps, pip, envp);
@@ -165,8 +157,6 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
     }
     wait(NULL);
 }
-
-
 
 int     main(int ac, char **av, char **envp)
 {
