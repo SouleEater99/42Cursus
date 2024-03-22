@@ -6,7 +6,7 @@
 /*   By: ael-maim <ael-maim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:16 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/20 14:32:35 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/22 08:33:46 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void    ft_exit(s_pipe *ps)
     exit(1);
 }
 
+/*
 void    ft_dup_error(s_pipe *ps, int fd1, int fd2)
 {
         perror("dup error");
@@ -45,18 +46,22 @@ void    ft_dup_error(s_pipe *ps, int fd1, int fd2)
             close (fd2);
         ft_exit(ps);
 }
+*/
 
 void    ft_first_cmd(s_pipe *ps, int *pip, char **envp)
 {
     int fd1;
 
+    close(pip[0]);
     fd1 = open(ps->file1, O_RDONLY);
     if (fd1 == -1)
     {
-        perror("error in file1");
+        write(2, ps->file1, ft_strlen(ps->file1));
+        perror(" ");
+        close(pip[1]);
         ft_exit(ps);
     }
-    close(pip[0]);
+    ft_assign(ps->av[ps->i], envp, ps);
     if (dup2(fd1, STDIN_FILENO) == -1)
     {
         perror("dup error");
@@ -79,6 +84,7 @@ void    ft_first_cmd(s_pipe *ps, int *pip, char **envp)
 
 void    ft_middle_cmd(s_pipe *ps, int *pip, char **envp)
 {
+    ft_assign(ps->av[ps->i], envp, ps);
     close(pip[0]);
     if (dup2 (pip[1], STDOUT_FILENO) == -1)
     {
@@ -110,13 +116,15 @@ void    ft_last_cmd(s_pipe *ps, int *pip, char **envp)
 {
     int fd2;
 
+    ft_assign(ps->av[ps->i], envp, ps);
     ft_unlink_file2(ps, envp);
     close(pip[0]);
     close(pip[1]);
     fd2 = open(ps->file2, O_CREAT | O_RDWR, 0777);
     if (fd2 == -1)
     {
-        perror("error in fd2");
+        write(2, ps->file2, ft_strlen(ps->file2));
+        perror(" ");
         ft_exit(ps);
     }
     if (dup2(fd2, STDOUT_FILENO) == -1)
@@ -135,8 +143,8 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
     int i;
     int pip[2];
 
-    i = 2;
-    while (i < ac - 1)
+    ps->i = 2;
+    while (ps->i < ac - 1)
     {
         if (pipe(pip) == -1)
             ft_exit(ps);
@@ -145,10 +153,10 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
             ft_exit(ps);
         if (ps->pid == 0)
         {
-            ft_assign(av[i], envp, ps);
-            if (i == 2)
+            close(ps->save_stdin);
+            if (ps->i == 2)
                 ft_first_cmd(ps, pip, envp);
-            else if (i == ac -2)
+            else if (ps->i == ac -2)
                 ft_last_cmd(ps, pip, envp);
             else
                 ft_middle_cmd(ps, pip, envp);
@@ -156,14 +164,14 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
         close(pip[1]);
         if (dup2(pip[0], STDIN_FILENO) == -1)
         {
-
             close(pip[0]);
             ft_exit(ps);
         }
         close(pip[0]);
-        i++;
+        ps->i++;
     }
-    wait(NULL);
+    printf("wait : %d\n",wait(&(ps->i)));
+    printf("status:%d\n", ps->i);
 }
 
 
@@ -171,21 +179,25 @@ void    ft_execute(int ac, char **av, char **envp, s_pipe *ps)
 int     main(int ac, char **av, char **envp)
 {
     s_pipe  *ps;
-    int     save_stdin;
 
-    save_stdin = dup(STDIN_FILENO);
     ps = malloc(sizeof(s_pipe));
+    ps->save_stdin = dup(STDIN_FILENO);
     if (!ps)
         return (0);
     if (ac >= 5)
     {
         if (!ft_strnstr(av[1], "here_doc", 9))
         {
+            ps->path = NULL;
+            ps->cmd = NULL;
+            ps->arg = NULL;
             ps->file1 = av[1];
             ps->file2 = av[ac - 1];
+            ps->av = av;
             ft_execute(ac, av, envp, ps);
         }
     }
-    dup2(save_stdin  ,STDIN_FILENO);
+    dup2(ps->save_stdin  ,STDIN_FILENO);
+    close(ps->save_stdin);
     return(free(ps), 0);
 }
