@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:05:42 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/24 21:16:25 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:18:02 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,14 @@ char	*ft_get_path(char **envp, char *cmd)
 	char	**tab;
 
 	i = 0;
+    while (*cmd && *cmd == ' ')
+        cmd++;
 	if (ft_check_path(cmd) == 0)
 		return (ft_strdup(cmd));
 	while (envp[i] && (ft_strnstr(envp[i], "PATH=", 6) == NULL))
 		i++;
+    if (envp[i] == NULL)
+        return (NULL);
 	tab = ft_split(envp[i] + 6, ':');
 	i = 0;
 	while (tab[i])

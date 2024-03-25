@@ -6,7 +6,7 @@
 /*   By: ael-maim <ael-maim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:16 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/24 21:46:36 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/24 23:24:48 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void	ft_child_proc(char **av, char **envp, s_pipe *ps, int *pip)
 int	ft_execute(int ac, char **av, char **envp, s_pipe *ps)
 {
 	int	i;
+    int status;
 	int	pip[2];
 
 	ps->i = 2;
@@ -151,8 +152,11 @@ int	ft_execute(int ac, char **av, char **envp, s_pipe *ps)
 		close(pip[0]);
 		ps->i++;
 	}
-	waitpid(ps->pid, &(ps->i), 0);
-	return (WEXITSTATUS(ps->i));
+	printf("waitpid : %d \n",waitpid(ps->pid, &status, 0));
+    while (ps->i != -1)
+        ps->i = wait(NULL);
+    printf("status :%d\n", status);
+	return (WEXITSTATUS(status));
 }
 
 int	main(int ac, char **av, char **envp)
