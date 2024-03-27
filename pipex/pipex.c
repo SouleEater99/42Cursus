@@ -6,7 +6,7 @@
 /*   By: ael-maim <ael-maim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:16 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/26 17:42:30 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:00:53 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,3 +221,4 @@ int	main(int ac, char **av, char **envp)
     close(ps->save_stdin);
     return (free(ps), i);
 }
+
