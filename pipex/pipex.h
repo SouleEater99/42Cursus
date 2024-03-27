@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:46:34 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/24 21:17:22 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:59:03 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include "../lib_ft/libft.h"
+# include "../get_next_line/get_next_line.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -34,6 +35,7 @@ typedef struct s_pipe
 	char	*path;
 	char	*file1;
 	char	*file2;
+    char    *limiter;
 	int		pid;
 	int		i;
 	int		ac;

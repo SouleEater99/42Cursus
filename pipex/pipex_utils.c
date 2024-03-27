@@ -6,7 +6,7 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:05:42 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/24 23:18:02 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/26 12:01:10 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,10 @@ char	*ft_get_cmd(char *cmd)
 	return (new_cmd);
 }
 
-void	ft_print_error(char **envp, char *cmd)
+void	ft_print_error(char *cmd)
 {
-	int	i;
 	int	size;
 
-	i = 0;
 	size = ft_strlen(cmd);
 	write(2, cmd, size);
 	write(2, ": command not found\n", 21);
@@ -93,7 +91,7 @@ void	ft_assign(char *cmd, char **envp, s_pipe *ps)
 	ps->arg = ft_split(cmd, ' ');
 	if (!ps->path)
 	{
-		ft_print_error(envp, ps->cmd);
+		ft_print_error(ps->cmd);
 		ft_exit(ps, 127);
 	}
 }
@@ -154,15 +152,19 @@ char	*ft_get_path(char **envp, char *cmd)
 	char	**tab;
 
 	i = 0;
-    while (*cmd && *cmd == ' ')
+    while (cmd && *cmd == ' ')
+    {
         cmd++;
-	if (ft_check_path(cmd) == 0)
+    }
+    if (ft_check_path(cmd) == 0)
 		return (ft_strdup(cmd));
 	while (envp[i] && (ft_strnstr(envp[i], "PATH=", 6) == NULL))
 		i++;
     if (envp[i] == NULL)
+    {
         return (NULL);
-	tab = ft_split(envp[i] + 6, ':');
+    }
+    tab = ft_split(envp[i] + 6, ':');
 	i = 0;
 	while (tab[i])
 	{

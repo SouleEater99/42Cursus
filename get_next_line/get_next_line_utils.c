@@ -6,13 +6,13 @@
 /*   By: ael-maim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:50:53 by ael-maim          #+#    #+#             */
-/*   Updated: 2023/12/07 18:08:15 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/26 16:46:10 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen_nl(char *str)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ int	ft_check_nl(char *buffer)
 	return (0);
 }
 
-char	*ft_strjoin(char *buckup, char *buffer)
+char	*ft_strjoin_nl(char *buckup, char *buffer)
 {
 	char	*new_buckup;
 	int		i;
@@ -46,12 +46,12 @@ char	*ft_strjoin(char *buckup, char *buffer)
 	{
 		buckup = malloc(1);
 		if (!buckup)
-			return (ft_free(buffer));
+			return (ft_free_nl(buffer));
 		buckup[0] = '\0';
 	}
-	new_buckup = malloc(ft_strlen(buckup) + ft_strlen(buffer) + 1);
+	new_buckup = malloc(ft_strlen_nl(buckup) + ft_strlen_nl(buffer) + 1);
 	if (!new_buckup)
-		return (free(buffer), ft_free(buckup));
+		return (free(buffer), ft_free_nl(buckup));
 	while (buckup[++i])
 		new_buckup[i] = buckup[i];
 	while (buffer[j])
@@ -72,7 +72,7 @@ char	*ft_get_nl(char *buckup)
 		i++;
 	line = malloc(i + 1);
 	if (!line)
-		return (ft_free(buckup));
+		return (ft_free_nl(buckup));
 	i = 0;
 	while (buckup[i] && buckup[i] != '\n')
 	{
@@ -102,9 +102,9 @@ char	*ft_get_remaind(char *buckup)
 		free(buckup);
 		return (NULL);
 	}
-	remaind = malloc(ft_strlen(buckup) - i + 1);
+	remaind = malloc(ft_strlen_nl(buckup) - i + 1);
 	if (!remaind)
-		return (ft_free(buckup));
+		return (ft_free_nl(buckup));
 	while (buckup[i])
 		remaind[j++] = buckup[i++];
 	remaind[j] = '\0';
