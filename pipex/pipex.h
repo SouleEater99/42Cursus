@@ -13,8 +13,8 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include "../lib_ft/libft.h"
 # include "../get_next_line/get_next_line.h"
+# include "../lib_ft/libft.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -35,7 +35,7 @@ typedef struct s_pipe
 	char	*path;
 	char	*file1;
 	char	*file2;
-    char    *limiter;
+	char	*limiter;
 	int		pid;
 	int		i;
 	int		ac;

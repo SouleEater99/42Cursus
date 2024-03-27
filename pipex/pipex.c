@@ -6,7 +6,7 @@
 /*   By: ael-maim <ael-maim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:16 by ael-maim          #+#    #+#             */
-/*   Updated: 2024/03/27 14:13:12 by ael-maim         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:13:31 by ael-maim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,22 +164,13 @@ int	ft_execute(int ac, char **envp, s_pipe *ps)
 	return (ft_wexitstatus(status));
 }
 
-void	ft_here_doc(int ac, char **av, s_pipe *ps)
+void	ft_here_doc(char **av, s_pipe *ps)
 {
 	char	*line;
 	int		pip[2];
 
 	if (pipe(pip) == -1)
 		ft_exit(ps, 1);
-	ps->path = NULL;
-	ps->cmd = NULL;
-	ps->arg = NULL;
-	ps->file1 = NULL;
-	ps->file2 = av[ac - 1];
-	ps->limiter = av[2];
-	ps->av = av;
-	ps->ac = ac;
-	ps->i = 3;
 	ft_putstr_fd("Here_Doc Pipe --> ", 1);
 	line = get_next_line(0);
 	while (line && ft_strncmp(line, av[2], ft_strlen(av[2])) != 0)
@@ -196,6 +187,18 @@ void	ft_here_doc(int ac, char **av, s_pipe *ps)
 	close(pip[0]);
 }
 
+void	ft_init_ps(int ac, char **av, s_pipe *ps)
+{
+	ps->path = NULL;
+	ps->cmd = NULL;
+	ps->arg = NULL;
+	ps->limiter = NULL;
+	ps->file1 = av[1];
+	ps->file2 = av[ac - 1];
+	ps->av = av;
+	ps->ac = ac;
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	s_pipe	*ps;
@@ -209,22 +212,17 @@ int	main(int ac, char **av, char **envp)
 	{
 		if (!ft_strnstr(av[1], "here_doc", 9))
 		{
-			ps->path = NULL;
-			ps->cmd = NULL;
-			ps->arg = NULL;
-			ps->limiter = NULL;
-			ps->file1 = av[1];
-			ps->file2 = av[ac - 1];
-			ps->av = av;
-			ps->ac = ac;
 			ps->i = 2;
-			i = ft_execute(ac, envp, ps);
+			ft_init_ps(ac, av, ps);
 		}
 		else
 		{
-			ft_here_doc(ac, av, ps);
-			i = ft_execute(ac, envp, ps);
+			ps->limiter = av[2];
+			ps->i = 3;
+			ft_init_ps(ac, av, ps);
+			ft_here_doc(av, ps);
 		}
+		i = ft_execute(ac, envp, ps);
 	}
 	dup2(ps->save_stdin, STDIN_FILENO);
 	close(ps->save_stdin);
