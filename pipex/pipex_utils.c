@@ -152,19 +152,19 @@ char	*ft_get_path(char **envp, char *cmd)
 	char	**tab;
 
 	i = 0;
-    while (cmd && *cmd == ' ')
-    {
-        cmd++;
-    }
-    if (ft_check_path(cmd) == 0)
+	while (cmd && *cmd == ' ')
+	{
+		cmd++;
+	}
+	if (ft_check_path(cmd) == 0)
 		return (ft_strdup(cmd));
 	while (envp[i] && (ft_strnstr(envp[i], "PATH=", 6) == NULL))
 		i++;
-    if (envp[i] == NULL)
-    {
-        return (NULL);
-    }
-    tab = ft_split(envp[i] + 6, ':');
+	if (envp[i] == NULL)
+	{
+		return (NULL);
+	}
+	tab = ft_split(envp[i] + 6, ':');
 	i = 0;
 	while (tab[i])
 	{
